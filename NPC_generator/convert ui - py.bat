@@ -1,0 +1,1 @@
+pyuic5 "C:\GitHub\Muskrat_RPG\NPC_generator\main.ui" -x -o "C:\GitHub\Muskrat_RPG\NPC_generator\ui.py"
