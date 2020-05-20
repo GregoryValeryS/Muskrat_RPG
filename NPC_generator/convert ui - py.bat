@@ -1,1 +1,2 @@
-pyuic5 "C:\GitHub\Muskrat_RPG\NPC_generator\main.ui" -x -o "C:\GitHub\Muskrat_RPG\NPC_generator\ui.py"
+pyuic5 "C:\GitHub\Muskrat_RPG\NPC_generator\main_menu.ui" -x -o "C:\GitHub\Muskrat_RPG\NPC_generator\ui_main_menu.py"
+pyuic5 "C:\GitHub\Muskrat_RPG\NPC_generator\NPC_widget.ui" -x -o "C:\GitHub\Muskrat_RPG\NPC_generator\ui_NPC_widget.py"
