@@ -12,40 +12,33 @@ def init_app_and_create_forms():
 
 
 def pb_add_npc():
-    global click_counter_add_NPC
-    if click_counter_add_NPC < 9:
-        click_counter_add_NPC += 1
-    if click_counter_add_NPC == 1:
-        WidgetNPС_1.show()
-    elif click_counter_add_NPC == 2:
-        WidgetNPС_2.show()
-    elif click_counter_add_NPC == 3:
-        WidgetNPС_3.show()
-    elif click_counter_add_NPC == 4:
-        WidgetNPС_4.show()
-    elif click_counter_add_NPC == 5:
-        WidgetNPС_5.show()
-    elif click_counter_add_NPC == 6:
-        WidgetNPС_6.show()
-    elif click_counter_add_NPC == 7:
-        WidgetNPС_7.show()
-    elif click_counter_add_NPC == 8:
-        WidgetNPС_8.show()
-    elif click_counter_add_NPC == 9:
-        WidgetNPС_9.show()
+    global widget
+    global WidgetNPС
+    global counter_NPC
+    if counter_NPC < 9:
+        counter_NPC += 1
+    else:
+        counter_NPC = 0
+    WidgetNPС[counter_NPC].show()
 
 
 def pb_remove_npc():
-    global click_counter_add_NPC
-    click_counter_add_NPC -= 1
-    WidgetNPС_1.close()
+    global counter_NPC
+    WidgetNPС[counter_NPC].close()
+    if counter_NPC < 1:
+        counter_NPC = 0
+    else:
+        counter_NPC -= 1
 
 
 def bptest():
-    widget_1.lineEdit_name.setText('test')
+    print("test")
+    # widget[].lineEdit_name.setText('test')
 
-def bptest2():
-    widget_2.lineEdit_name.setText('test')
+
+#
+# def bptest2():
+#     widget_2.lineEdit_name.setText('test')
 
 
 def test():
@@ -76,48 +69,24 @@ def test():
 
 
 def main():
+    global widget
+    global WidgetNPС
+    global counter_NPC
     app = QtWidgets.QApplication(sys.argv)  # init application
     MainWindow = QtWidgets.QMainWindow()  # Create form main menu создание формы окна главного меню
-    # Create NPC widgets создание формы виджетов NPC
-    global click_counter_add_NPC, widget_1, widget_2, widget_3, widget_4, widget_5, widget_6, widget_7, widget_8, widget_9, WidgetNPС_1, WidgetNPС_2, WidgetNPС_3, WidgetNPС_4, WidgetNPС_5, WidgetNPС_6, WidgetNPС_7, WidgetNPС_8, WidgetNPС_9
-    click_counter_add_NPC = 0
-    widget_1 = Ui_NPC_Widget()
-    WidgetNPС_1 = QtWidgets.QWidget()
-    widget_1.setupUi(WidgetNPС_1)
-    widget_2 = Ui_NPC_Widget()
-    WidgetNPС_2 = QtWidgets.QWidget()
-    widget_2.setupUi(WidgetNPС_2)
-    widget_3 = Ui_NPC_Widget()
-    WidgetNPС_3 = QtWidgets.QWidget()
-    widget_3.setupUi(WidgetNPС_3)
-    widget_4 = Ui_NPC_Widget()
-    WidgetNPС_4 = QtWidgets.QWidget()
-    widget_4.setupUi(WidgetNPС_4)
-    widget_5 = Ui_NPC_Widget()
-    WidgetNPС_5 = QtWidgets.QWidget()
-    widget_5.setupUi(WidgetNPС_5)
-    widget_6 = Ui_NPC_Widget()
-    WidgetNPС_6 = QtWidgets.QWidget()
-    widget_6.setupUi(WidgetNPС_6)
-    widget_7 = Ui_NPC_Widget()
-    WidgetNPС_7 = QtWidgets.QWidget()
-    widget_7.setupUi(WidgetNPС_7)
-    widget_8 = Ui_NPC_Widget()
-    WidgetNPС_8 = QtWidgets.QWidget()
-    widget_8.setupUi(WidgetNPС_8)
-    widget_9 = Ui_NPC_Widget()
-    WidgetNPС_9 = QtWidgets.QWidget()
-    widget_9.setupUi(WidgetNPС_9)
-    # init main menu UI - инициализация формы главного меню:
+    counter_NPC = 0
+    widget = []
+    WidgetNPС = []
+    for i in range(0, 10):
+        widget.append(Ui_NPC_Widget())
+        WidgetNPС.append(QtWidgets.QWidget())
+        widget[i].setupUi(WidgetNPС[i])
+        widget[i].pushButton_generation.clicked.connect(bptest)
     main_menu = Ui_MainWindow()
     main_menu.setupUi(MainWindow)
     MainWindow.show()
-    # описание действия кнопок главного меню:
-    widget_1.pushButton_generation.clicked.connect(bptest)
-    widget_2.pushButton_generation.clicked.connect(bptest2)
     main_menu.pushButton_add_NPC.clicked.connect(pb_add_npc)
     main_menu.pushButton_remove_NPC.clicked.connect(pb_remove_npc)
-    # Run main loop:
     sys.exit(app.exec_())
 
 
