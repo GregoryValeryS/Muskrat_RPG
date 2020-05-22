@@ -12,33 +12,22 @@ def init_app_and_create_forms():
 
 
 def pb_add_npc():
-    global widget
-    global WidgetNPС
     global counter_NPC
-    if counter_NPC < 9:
+    if counter_NPC <= 9:
+        WidgetNPС[counter_NPC].show()
         counter_NPC += 1
-    else:
-        counter_NPC = 0
-    WidgetNPС[counter_NPC].show()
 
 
 def pb_remove_npc():
     global counter_NPC
-    WidgetNPС[counter_NPC].close()
-    if counter_NPC < 1:
-        counter_NPC = 0
-    else:
+    if counter_NPC >= 1:
         counter_NPC -= 1
+        WidgetNPС[counter_NPC].close()
 
 
-def bptest():
-    print("test")
-    # widget[].lineEdit_name.setText('test')
-
-
-#
-# def bptest2():
-#     widget_2.lineEdit_name.setText('test')
+def bptest(widget_number=1):
+    print(widget_number)
+    widget[widget_number].lineEdit_name.setText('test')
 
 
 def test():
@@ -48,7 +37,7 @@ def test():
     print(text.level())
     print(text.word())
 
-    person = Person('ru')  # сы создали объект person, класса Person()
+    person = Person('ru')  # мы создали объект person, класса Person()
 
     man = person.full_name(gender=Gender.FEMALE)
     woman = person.full_name(gender=Gender.MALE)
@@ -69,19 +58,36 @@ def test():
 
 
 def main():
-    global widget
-    global WidgetNPС
-    global counter_NPC
+    global widget, WidgetNPС, counter_NPC
     app = QtWidgets.QApplication(sys.argv)  # init application
     MainWindow = QtWidgets.QMainWindow()  # Create form main menu создание формы окна главного меню
     counter_NPC = 0
     widget = []
     WidgetNPС = []
     for i in range(0, 10):
+        print(i)
         widget.append(Ui_NPC_Widget())
         WidgetNPС.append(QtWidgets.QWidget())
         widget[i].setupUi(WidgetNPС[i])
+        widget[i].pushButton_info.clicked.connect(bptest)
         widget[i].pushButton_generation.clicked.connect(bptest)
+        widget[i].pushButton_reset.clicked.connect(bptest)
+        widget[i].pushButton_load.clicked.connect(bptest)
+        widget[i].pushButton_save.clicked.connect(bptest)
+        widget[i].pushButton_incoming_damage_enter.clicked.connect(bptest)
+        widget[i].pushButton_attack.clicked.connect(bptest)
+        widget[i].pushButton_d20_physique.clicked.connect(bptest)
+        widget[i].pushButton_d20_mastery.clicked.connect(bptest)
+        widget[i].pushButton_d20_skill_1.clicked.connect(bptest)
+        widget[i].pushButton_d20_skill_2.clicked.connect(bptest)
+        widget[i].pushButton_d20_skill_3.clicked.connect(bptest)
+        widget[i].pushButton_d20_skill_4.clicked.connect(bptest)
+        widget[i].pushButton_d20_intelligence.clicked.connect(bptest)
+        widget[i].pushButton_d20_spell_1.clicked.connect(bptest)
+        widget[i].pushButton_d20_spell_2.clicked.connect(bptest)
+        widget[i].pushButton_d20_spell_3.clicked.connect(bptest)
+        widget[i].pushButton_d20_spell_4.clicked.connect(bptest)
+        widget[i].pushButton_d20_spell_5.clicked.connect(bptest)
     main_menu = Ui_MainWindow()
     main_menu.setupUi(MainWindow)
     MainWindow.show()
