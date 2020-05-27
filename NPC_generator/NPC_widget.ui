@@ -269,7 +269,7 @@
     </property>
     <item>
      <property name="text">
-      <string/>
+      <string>NPC type</string>
      </property>
     </item>
    </widget>
@@ -411,7 +411,7 @@
      <string>Reset</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_name_2">
+   <widget class="QLineEdit" name="lineEdit_name_more">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -1013,24 +1013,6 @@
    <property name="title">
     <string/>
    </property>
-   <widget class="QComboBox" name="comboBox_weapon2_type">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>58</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <item>
-     <property name="text">
-      <string>type</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QLineEdit" name="lineEdit_weapon2_armor_damage">
     <property name="geometry">
      <rect>
@@ -1141,6 +1123,96 @@
     <item>
      <property name="text">
       <string>type</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Без оружия</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Кастет</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Кинжал</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Меч</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Копьё</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Топор</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Молот</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хПосох</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хКопьё</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хМеч</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хТопор</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хМолот</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Метать</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Пистолет</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хПраща</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хЛук</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хАрбалет</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2хРужьё</string>
      </property>
     </item>
    </widget>
@@ -1319,30 +1391,12 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_weapon1">
+   <widget class="QComboBox" name="comboBox_weapon1_type_2">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>171</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <item>
-     <property name="text">
-      <string>Weapon</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="comboBox_weapon2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>171</width>
+      <y>59</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -1351,10 +1405,92 @@
     </property>
     <item>
      <property name="text">
-      <string>Weapon</string>
+      <string>type</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Без оружия</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Занято</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Щит</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Кастет</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Кинжал</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Меч</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Копьё</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Топор</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Молот</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Метать</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Пистолет</string>
      </property>
     </item>
    </widget>
+   <widget class="QLineEdit" name="lineEdit_weapon1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>1</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_weapon2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>comboBox_weapon1_type_2</zorder>
    <zorder>comboBox_weapon1_type</zorder>
    <zorder>lineEdit_weapon2_health_damage</zorder>
    <zorder>lineEdit_weapon2_penetration_damage</zorder>
@@ -1364,15 +1500,14 @@
    <zorder>lineEdit_weapon1_penetration_damage</zorder>
    <zorder>lineEdit_weapon1_armor_damage</zorder>
    <zorder>lineEdit_weapon1_magic_damage</zorder>
-   <zorder>comboBox_weapon2_type</zorder>
    <zorder>lineEdit_health</zorder>
    <zorder>lineEdit_armor</zorder>
    <zorder>lineEdit_magic_barrier</zorder>
    <zorder>radioButton_defense</zorder>
    <zorder>pushButton_attack</zorder>
    <zorder>comboBox_plate</zorder>
-   <zorder>comboBox_weapon1</zorder>
-   <zorder>comboBox_weapon2</zorder>
+   <zorder>lineEdit_weapon1</zorder>
+   <zorder>lineEdit_weapon2</zorder>
   </widget>
  </widget>
  <resources/>

@@ -1,6 +1,3 @@
-from mimesis import Person
-from mimesis.enums import Gender
-from mimesis import Text
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui_main_menu import Ui_MainWindow
@@ -969,7 +966,7 @@ if True:
         widget[9].pushButton_d20_spell_2.clicked.connect(pushbutton_d20_spell_2_9)
         widget[9].pushButton_d20_spell_3.clicked.connect(pushbutton_d20_spell_3_9)
         widget[9].pushButton_d20_spell_4.clicked.connect(pushbutton_d20_spell_4_9)
-        widget[9].pushButton_d20_spell_5.clicked.connect(pushbutton_d20_spell_5_9) #
+        widget[9].pushButton_d20_spell_5.clicked.connect(pushbutton_d20_spell_5_9)  #
 
 
 def pushbutton_add_npc():
@@ -1063,31 +1060,85 @@ def pushbutton_d20_spell_5(i: int):  # i - widget number
     pass
 
 
-def test():
-    text = Text('ru')
-    print(text.swear_word())
-    print(text.answer())
-    print(text.level())
-    print(text.word())
+NPC_types = {'Мирный житель':
+                 {'name_chance': 1, 'last_name_chance': 1, 'nick_chance': 0,
+                  'weapon_chance': 0.1, 'armor_chance': 0, 'shield_chance': 0, 'health_damage': 2},
+             }
 
-    person = Person('ru')  # мы создали объект person, класса Person()
+NPC_types = ['Мирный житель',
+             'Торговец',
+             'Разбойник',
+             'Стражник',
+             'Воин',
+             'Маг',
+             'Рыцарь',
+             'Странник',
+             'Дракон',
+             'Гигант',
+             'Зверь',
+             'Элементаль',
+             'Мутант',
+             'Ребёнок',
+             ]
 
-    man = person.full_name(gender=Gender.FEMALE)
-    woman = person.full_name(gender=Gender.MALE)
-    age = person.age(minimum=16, maximum=66)
-    height = person.height(minimum=1.5, maximum=2.0)
-    weight = person.weight(minimum=38, maximum=90)
-    sexual_orientation = person.sexual_orientation(symbol=False)
-    worldview = person.worldview()
-    political_views = person.political_views()
-
-    print(man, woman)
-    print(age)
-    print(height)
-    print(weight)
-    print(sexual_orientation)
-    print(worldview)
-    print(political_views)
+weapons_types = {'Без оружия':
+                     {'name': 'Без оружия', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 1},
+                 'Кастет':
+                     {'name': 'Обычный кастет', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+                 'Кинжал':
+                     {'name': 'Обычный кинжал', 'two-handed': False, 'crit': 4,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+                 'Меч':
+                     {'name': 'Обычный меч', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 0, 'health_damage': 3},
+                 'Копьё':
+                     {'name': 'Обычное копьё', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 2},
+                 'Топор':
+                     {'name': 'Обычный топор', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 2},
+                 'Молот':
+                     {'name': 'Обычный молот', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 1, 'health_damage': 2},
+                 'Посох':
+                     {'name': 'Обычный посох', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+                 '2хМеч':
+                     {'name': 'Обычный 2х меч', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 1, 'health_damage': 6},
+                 '2хКопьё':
+                     {'name': 'Обычное 2х копьё', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 5},
+                 '2хТопор':
+                     {'name': 'Обычный 2х топор', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 5, 'penetration_damage': 4, 'health_damage': 4},
+                 '2хМолот':
+                     {'name': 'Обычный 2х молот', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 7, 'penetration_damage': 2, 'health_damage': 4},
+                 'Метательное':
+                     {'name': 'Обычное метательное оружие', 'two-handed': False, 'crit': 4,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+                 'Пистолет':
+                     {'name': 'Обычный пистолет', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 2, 'health_damage': 3},
+                 'Лук':
+                     {'name': 'Обычный лук', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 3},
+                 'Праща':
+                     {'name': 'Обычная праща', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 3},
+                 'Арбалет':
+                     {'name': 'Обычный арбалет', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 5, 'health_damage': 6},
+                 'Ружьё':
+                     {'name': 'Обычное ружьё', 'two-handed': True, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 6, 'health_damage': 6},
+                 'Щит':
+                     {'name': 'Обычный щит', 'two-handed': False, 'crit': 2,
+                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 0},
+                 }
 
 
 def main():
@@ -1101,6 +1152,7 @@ def main():
         widget.append(Ui_NPC_Widget())
         WidgetNPС.append(QtWidgets.QWidget())
         widget[i].setupUi(WidgetNPС[i])
+        widget[i].comboBox_type.addItems(NPC_types)
     init_widget_buttons()
     main_menu = Ui_MainWindow()
     main_menu.setupUi(MainWindow)
