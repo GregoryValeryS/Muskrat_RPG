@@ -2,6 +2,11 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui_main_menu import Ui_MainWindow
 from ui_NPC_widget import Ui_NPC_Widget
+from mimesis import Person
+from mimesis.enums import Gender
+from mimesis import Text
+from random import randint, choice
+from store import NPC_types_dict, weapons_types, spells_dict, talents_dict, skills_dict, skills_list, skills_types_list
 
 # под этим условием лежит сегмет программы, содержащий функции кнопок, передающие номер окна в действующую функцию
 # и функцию инцииализации всех кнопок виджета
@@ -984,12 +989,71 @@ def pushbutton_remove_npc():
 
 
 def pushbutton_info(i: int):  # i - widget number
-    widget[i].lineEdit_name.setText('test')
+    main_menu.textEdit_battlelog.append('info')
     pass
 
 
 def pushbutton_generation(i: int):  # i - widget number
-    pass
+
+    # определение типа 0 - не выбрано, 1...len(NPC_types_dict) - остальные типы
+    if widget[i].comboBox_type.currentIndex() == 0:  # 0 индекс - ничего не выбрано
+        widget[i].comboBox_type.setCurrentIndex(randint(1, len(NPC_types_dict)))  # устанавливает случайное значение
+    this_type = widget[i].comboBox_type.currentText()
+
+    # определение пола: 0 - не выбрано, 1 - Ж, 2 - М, 3 - Н (нет)
+    if widget[i].comboBox_gender.currentIndex() == 0:  # если пол не выбран
+        if NPC_types_dict[this_type]['has_sex'] == 0:  # если пола нет установаить 3 - Н
+            widget[i].comboBox_gender.setCurrentIndex(3)
+            gender_for_Person = None  # значение для работы класса Person, для генерации имени
+        else:
+            if randint(1, 100) >= NPC_types_dict[this_type]['male_percent']:
+                widget[i].comboBox_gender.setCurrentIndex(1)
+                gender_for_Person = Gender.FEMALE  # значение для работы класса Person, для генерации имени
+            else:
+                widget[i].comboBox_gender.setCurrentIndex(2)
+                gender_for_Person = Gender.MALE  # значение для работы класса Person, для генерации имени
+    this_gender = widget[i].comboBox_gender.currentText()
+
+    # определение класса: 0 - не выбрано, 1 - Trash, 2 - Elite, 3 - Legend
+    if widget[i].comboBox_trash_elite_legend.currentIndex() == 0:  # если класс не выбран
+        trash_elite_legend_random = randint(1, 100)
+        if trash_elite_legend_random <= NPC_types_dict[this_type]['elite_chance']:
+            widget[i].comboBox_trash_elite_legend.setCurrentIndex(2)
+            class_factor = 2
+        elif trash_elite_legend_random <= NPC_types_dict[this_type]['elite_chance'] + NPC_types_dict[this_type]['legend_chance']:
+            widget[i].comboBox_trash_elite_legend.setCurrentIndex(3)
+            class_factor = 3
+        else:
+            widget[i].comboBox_trash_elite_legend.setCurrentIndex(1)
+            class_factor = 1
+    this_class = widget[i].comboBox_trash_elite_legend.currentText()
+
+    # подбор имени
+    person = person_ru  # тут, возможно, будут варианты для других стран
+    text = text_ru
+    if len(widget[i].lineEdit_name.text()) == 0:  # Если в "имя" ничего не введено:
+        if NPC_types_dict[this_type]['name_chance'] == 1:  # Если существу вообще положено иметь имя
+            this_first_name = person.name(gender=gender_for_Person)
+            this_last_name = person.last_name(gender=gender_for_Person)
+            this_full_name = f"{this_first_name} {this_last_name}"
+            if randint(1, 100) <= NPC_types_dict[this_type]['nick_chance']:  # будет ли кличка?
+                this_nick = f"'{text.swear_word().title()}' "
+            else:
+                this_nick = ''
+            if randint(1, 100) <= NPC_types_dict[this_type]['full_name_chance']:  # будет ли полное имя?
+                widget[i].lineEdit_name.setText(f"{this_first_name} {this_nick}{this_last_name}")
+            else:  # тогда имя или фамилия?
+                if randint(1, 100) <= NPC_types_dict[this_type]['first_name_or_last_name']:
+                    widget[i].lineEdit_name.setText(f"{this_first_name} {this_nick}{this_last_name}")
+                else:
+                    widget[i].lineEdit_name.setText(f"{this_last_name} {this_nick}")
+        else:
+            widget[i].lineEdit_name.setText(f"{this_class} {this_type}")
+
+    # определим уровень
+    if len(widget[i].lineEdit_lvl.text()) == 0:
+        widget[i].lineEdit_lvl.setText(str(randint(NPC_types_dict[this_type]['min_lvl'],NPC_types_dict[this_type]['max_lvl'])))
+
 
 
 def pushbutton_reset(i: int):  # i - widget number
@@ -1060,89 +1124,10 @@ def pushbutton_d20_spell_5(i: int):  # i - widget number
     pass
 
 
-NPC_types = {'Мирный житель':
-                 {'name_chance': 1, 'last_name_chance': 1, 'nick_chance': 0,
-                  'weapon_chance': 0.1, 'armor_chance': 0, 'shield_chance': 0, 'health_damage': 2},
-             }
-
-NPC_types = ['Мирный житель',
-             'Торговец',
-             'Разбойник',
-             'Стражник',
-             'Воин',
-             'Маг',
-             'Рыцарь',
-             'Странник',
-             'Дракон',
-             'Гигант',
-             'Зверь',
-             'Элементаль',
-             'Мутант',
-             'Ребёнок',
-             ]
-
-weapons_types = {'Без оружия':
-                     {'name': 'Без оружия', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 1},
-                 'Кастет':
-                     {'name': 'Обычный кастет', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-                 'Кинжал':
-                     {'name': 'Обычный кинжал', 'two-handed': False, 'crit': 4,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-                 'Меч':
-                     {'name': 'Обычный меч', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 0, 'health_damage': 3},
-                 'Копьё':
-                     {'name': 'Обычное копьё', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 2},
-                 'Топор':
-                     {'name': 'Обычный топор', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 2},
-                 'Молот':
-                     {'name': 'Обычный молот', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 1, 'health_damage': 2},
-                 'Посох':
-                     {'name': 'Обычный посох', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-                 '2хМеч':
-                     {'name': 'Обычный 2х меч', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 1, 'health_damage': 6},
-                 '2хКопьё':
-                     {'name': 'Обычное 2х копьё', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 5},
-                 '2хТопор':
-                     {'name': 'Обычный 2х топор', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 5, 'penetration_damage': 4, 'health_damage': 4},
-                 '2хМолот':
-                     {'name': 'Обычный 2х молот', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 7, 'penetration_damage': 2, 'health_damage': 4},
-                 'Метательное':
-                     {'name': 'Обычное метательное оружие', 'two-handed': False, 'crit': 4,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-                 'Пистолет':
-                     {'name': 'Обычный пистолет', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 2, 'health_damage': 3},
-                 'Лук':
-                     {'name': 'Обычный лук', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 3},
-                 'Праща':
-                     {'name': 'Обычная праща', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 3},
-                 'Арбалет':
-                     {'name': 'Обычный арбалет', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 5, 'health_damage': 6},
-                 'Ружьё':
-                     {'name': 'Обычное ружьё', 'two-handed': True, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 6, 'health_damage': 6},
-                 'Щит':
-                     {'name': 'Обычный щит', 'two-handed': False, 'crit': 2,
-                      'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 0},
-                 }
-
-
 def main():
-    global widget, WidgetNPС, widgets_counter
+    global widget, WidgetNPС, widgets_counter, main_menu, person_ru, text_ru
+    person_ru = Person('ru') # объект Person для генерации личных данных NPC
+    text_ru = Text('ru') # объект для генерации некотрых слов
     app = QtWidgets.QApplication(sys.argv)  # init application
     MainWindow = QtWidgets.QMainWindow()  # Create form main menu создание формы окна главного меню
     widgets_counter = 0
@@ -1152,7 +1137,18 @@ def main():
         widget.append(Ui_NPC_Widget())
         WidgetNPС.append(QtWidgets.QWidget())
         widget[i].setupUi(WidgetNPС[i])
-        widget[i].comboBox_type.addItems(NPC_types)
+        widget[i].comboBox_type.addItems(NPC_types_dict)
+        widget[i].comboBox_talent_1.addItems(talents_dict)
+        widget[i].comboBox_talent_2.addItems(talents_dict)
+        widget[i].comboBox_skill_1.addItems(skills_list)
+        widget[i].comboBox_skill_2.addItems(skills_list)
+        widget[i].comboBox_skill_3.addItems(skills_list)
+        widget[i].comboBox_skill_4.addItems(skills_list)
+        widget[i].comboBox_spell_1.addItems(spells_dict)
+        widget[i].comboBox_spell_2.addItems(spells_dict)
+        widget[i].comboBox_spell_3.addItems(spells_dict)
+        widget[i].comboBox_spell_4.addItems(spells_dict)
+        widget[i].comboBox_spell_5.addItems(spells_dict)
     init_widget_buttons()
     main_menu = Ui_MainWindow()
     main_menu.setupUi(MainWindow)
