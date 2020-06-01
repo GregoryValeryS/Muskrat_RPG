@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>365</width>
-    <height>314</height>
+    <width>370</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -959,6 +959,32 @@
      </property>
     </item>
    </widget>
+   <widget class="QRadioButton" name="radioButton_magic">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>160</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Magic</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_might">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Might</string>
+    </property>
+   </widget>
    <zorder>pushButton_d20_mastery</zorder>
    <zorder>comboBox_skill_1</zorder>
    <zorder>pushButton_d20_skill_1</zorder>
@@ -997,6 +1023,8 @@
    <zorder>comboBox_talent_2</zorder>
    <zorder>lineEdit_physique</zorder>
    <zorder>comboBox_talent_1</zorder>
+   <zorder>radioButton_magic</zorder>
+   <zorder>radioButton_might</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_weapons_battle">
    <property name="geometry">

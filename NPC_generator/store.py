@@ -1,36 +1,3 @@
-from mimesis import Person
-from mimesis.enums import Gender
-from mimesis import Text
-from random import randint, choice
-
-
-def test():
-    text = Text('ru')
-    print(text.swear_word())
-    print(text.answer())
-    print(text.level())
-    print(text.word())
-
-    person = Person('ru')  # мы создали объект person, класса Person()
-
-    man = person.full_name(gender=Gender.MALE)
-    woman = person.full_name(gender=Gender.FEMALE)
-    age = person.age(minimum=16, maximum=66)
-    height = person.height(minimum=1.5, maximum=2.0)
-    weight = person.weight(minimum=38, maximum=90)
-    sexual_orientation = person.sexual_orientation(symbol=False)
-    worldview = person.worldview()
-    political_views = person.political_views()
-
-    print(man, woman)
-    print(age)
-    print(height)
-    print(weight)
-    print(sexual_orientation)
-    print(worldview)
-    print(political_views)
-
-
 NPC_types_dict = {
     'Разбойник':
         {'has_sex': 1,  # 1 - есть пол, 0 - нет пола (ставится значение 'Н')
@@ -39,15 +6,24 @@ NPC_types_dict = {
          'elite_chance': 30, 'legend_chance': 5,  # trash = 100-'elite_chance'-'legend_chance'
 
          'name_chance': 1,  # 0 - нет имени, 1 - есть имя
-         'nick_chance': 50,  # веролятность носить кличку
+         'nick_chance': 100,  # веролятность носить кличку
          'full_name_chance': 50,  # вероятность именть полное и имя, и фамилию
          'first_name_or_last_name': 50,  # вероятность идентификации себя по имени, остальное - по фамилии
 
-         'min_lvl': 5, 'max_lvl': 50,
+         'min_lvl': 50, 'max_lvl': 50,  # каждый уровень - очко навыков/характеристик
 
-         'base_physique': 3, 'base_mastery': 2, 'base_intelligence': 2,  # базовые характеристики
+         'might_or_magic': 50,  # шанс иметь уклон в физ.навыки, а не в магию
 
-         'weapon_chance': 0.1, 'armor_chance': 0, 'shield_chance': 0, 'health_damage': 2},
+         'has_skills': 1,  # имеет скилы и спелы вообще
+         'has_spells': 1,
+
+         'skill_or_spell': 50,  # процент скилов, сотальное - спелы
+
+         'ranged_percent': 0, 'melee_percent': 0,  # считаем от 100, остальное - 'non-combat_percent'
+
+         'base_physique': 3, 'base_mastery': 1, 'base_intelligence': 2,  # базовые характеристики
+
+         'weapon_chance': 0.1, 'armor_chance': 0, 'shield_chance': 0},
 }
 """
     'Мирный житель':
@@ -106,14 +82,6 @@ plate = {  # шкура. Название: значение брони
     'Отличный доспех': 17,
     'Эпический доспех': 25,
     'Легендарный доспех': 50,
-}
-
-shell = {  # шкура. Название: значение брони
-    'Роговое покрытие': 6,
-    'Каменное покрытие': 10,
-    'Железное покрытие': 15,
-    'Стальное покрытие': 20,
-    'Титановое покрытие': 30,
 }
 
 weapons_types = {
@@ -196,6 +164,9 @@ spells_dict = {
     'Слёзы любви': 'ваши раны затягиваются каждый ход +1 хп',
 }
 
+spells_list = spells_dict.keys()
+spells_index_list = [i for i in range(1, len(spells_dict.keys())+1)]
+
 talents_dict = {
     'Отталкивание': 'Толчёк всех в непосредственной близости',
     'Берсерк': 'Вы наносите и получаете 2 раза больше урона',
@@ -208,14 +179,14 @@ talents_dict = {
 }
 
 skills_dict = {
-    'Тип: Ближний бой': ['1хМетать/кулак', '1хКлинки', '1хУдарное', '1/2хКопья/Посох', '2хКлинки', '2хУдарное'],
-    'Тип: Дальний бой': ['1хПистолеты', '2хРужья', '2хАрбалет', '2хЛук', '2хПраща'],
-    'Тип: Небоевые': ['Взлом', 'Ремонт', 'Карты', 'Выживание', 'Животные']
+    'Melee': ['Единоборства', '1хКлинки', '1хУдарное', '1/2хКопья/Посох', '2хКлинки', '2хУдарное'],
+    'Ranged': ['1хПистолеты', '2хРужья', '2хАрбалет', '2хЛук', '2хПраща'],
+    'Noncombat': ['Взлом', 'Ремонт', 'Карты', 'Выживание', 'Животные']
 }
 
-skills_types_list = []
-for skill_type in dict.keys(skills_dict):
-    skills_types_list.append(skill_type)
-skills_list = [skills_types_list[0]] + skills_dict['Тип: Ближний бой'] + \
-              [skills_types_list[1]] + skills_dict['Тип: Дальний бой'] + \
-              [skills_types_list[2]] + skills_dict['Тип: Небоевые']
+melee_index_list = [i for i in range(1, len(skills_dict['Melee']) + 1)]
+ranged_index_list = [i for i in range(len(skills_dict['Melee'])+1, len(skills_dict['Melee']) + len(skills_dict['Ranged']) + 1)]
+noncombat_index_list = [i for i in range(len(skills_dict['Melee']) + len(skills_dict['Ranged']) + 1, len(skills_dict['Melee']) + len(skills_dict['Ranged']) + len(skills_dict['Noncombat']) + 1)]
+
+
+skills_list = skills_dict['Melee'] + skills_dict['Ranged'] + skills_dict['Noncombat']

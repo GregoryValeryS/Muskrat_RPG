@@ -6,7 +6,8 @@ from mimesis import Person
 from mimesis.enums import Gender
 from mimesis import Text
 from random import randint, choice
-from store import NPC_types_dict, weapons_types, spells_dict, talents_dict, skills_dict, skills_list, skills_types_list
+from store import NPC_types_dict, weapons_types, spells_dict, talents_dict, skills_dict, skills_list, melee_index_list, \
+    ranged_index_list, noncombat_index_list, spells_list, spells_index_list
 
 # под этим условием лежит сегмет программы, содержащий функции кнопок, передающие номер окна в действующую функцию
 # и функцию инцииализации всех кнопок виджета
@@ -1004,14 +1005,14 @@ def pushbutton_generation(i: int):  # i - widget number
     if widget[i].comboBox_gender.currentIndex() == 0:  # если пол не выбран
         if NPC_types_dict[this_type]['has_sex'] == 0:  # если пола нет установаить 3 - Н
             widget[i].comboBox_gender.setCurrentIndex(3)
-            gender_for_Person = None  # значение для работы класса Person, для генерации имени
         else:
             if randint(1, 100) >= NPC_types_dict[this_type]['male_percent']:
                 widget[i].comboBox_gender.setCurrentIndex(1)
-                gender_for_Person = Gender.FEMALE  # значение для работы класса Person, для генерации имени
             else:
                 widget[i].comboBox_gender.setCurrentIndex(2)
-                gender_for_Person = Gender.MALE  # значение для работы класса Person, для генерации имени
+    gender_for_Person_list = [None, Gender.FEMALE, Gender.MALE,
+                              None]  # значение для работы класса Person, для генерации имени
+    gender_for_Person = gender_for_Person_list[widget[i].comboBox_gender.currentIndex()]
     this_gender = widget[i].comboBox_gender.currentText()
 
     # определение класса: 0 - не выбрано, 1 - Trash, 2 - Elite, 3 - Legend
@@ -1020,13 +1021,15 @@ def pushbutton_generation(i: int):  # i - widget number
         if trash_elite_legend_random <= NPC_types_dict[this_type]['elite_chance']:
             widget[i].comboBox_trash_elite_legend.setCurrentIndex(2)
             class_factor = 2
-        elif trash_elite_legend_random <= NPC_types_dict[this_type]['elite_chance'] + NPC_types_dict[this_type]['legend_chance']:
+        elif trash_elite_legend_random <= NPC_types_dict[this_type]['elite_chance'] + \
+                NPC_types_dict[this_type]['legend_chance']:
             widget[i].comboBox_trash_elite_legend.setCurrentIndex(3)
             class_factor = 3
         else:
             widget[i].comboBox_trash_elite_legend.setCurrentIndex(1)
             class_factor = 1
     this_class = widget[i].comboBox_trash_elite_legend.currentText()
+    class_factor = int(widget[i].comboBox_trash_elite_legend.currentIndex())
 
     # подбор имени
     person = person_ru  # тут, возможно, будут варианты для других стран
@@ -1052,8 +1055,221 @@ def pushbutton_generation(i: int):  # i - widget number
 
     # определим уровень
     if len(widget[i].lineEdit_lvl.text()) == 0:
-        widget[i].lineEdit_lvl.setText(str(randint(NPC_types_dict[this_type]['min_lvl'],NPC_types_dict[this_type]['max_lvl'])))
+        this_lvl = randint(NPC_types_dict[this_type]['min_lvl'], NPC_types_dict[this_type]['max_lvl'])
+        widget[i].lineEdit_lvl.setText(str(this_lvl))
+    else:
+        this_lvl = int(widget[i].lineEdit_lvl.text())
 
+    # определим уклон в силу или магию
+    if not widget[i].radioButton_might.isChecked() and not widget[i].radioButton_magic.isChecked():
+        if randint(1, 100) <= NPC_types_dict[this_type]['might_or_magic']:
+            might_or_magic = 1
+            widget[i].radioButton_might.setChecked(True)
+        else:
+            might_or_magic = 0
+            widget[i].radioButton_magic.setChecked(True)
+    else:
+        might_or_magic = int(widget[i].radioButton_might.isChecked())  # 1 - уклон в оружие, 2 - уклон в магию
+
+    # Установка порогового нижнего и верхнего значений для навыков и спелов
+    skill_left = 3 + (class_factor - 1) * 5 + might_or_magic
+    if skill_left > 20:
+        skill_left = 20
+    skill_right = 8 + (class_factor - 1) * 5 + might_or_magic
+    if skill_right > 20:
+        skill_right = 20
+    spell_left = 3 + (class_factor - 1) * 5 + (1 - 1 * might_or_magic)
+    if spell_left > 20:
+        spell_left = 20
+    spell_right = 8 + (class_factor - 1) * 5 + (1 - 1 * might_or_magic)
+    if spell_right > 20:
+        spell_right = 20
+
+    # Проверка на повторы в выбранных скилах и генерация значений к имеющимся
+    points = this_lvl
+    virtual_skills_list = [None,  # Список индексов скиллов, в котором могут быть повторы
+                           widget[i].comboBox_skill_1.currentIndex(),
+                           widget[i].comboBox_skill_2.currentIndex(),
+                           widget[i].comboBox_skill_3.currentIndex(),
+                           widget[i].comboBox_skill_4.currentIndex()]
+    virtual_skills_points_list = [None,  # Список значений скиллов
+                                  widget[i].lineEdit_skill_1.text(),
+                                  widget[i].lineEdit_skill_2.text(),
+                                  widget[i].lineEdit_skill_3.text(),
+                                  widget[i].lineEdit_skill_4.text()]
+    for n in range(len(virtual_skills_list) - 1, 0, -1):  # поверка в обратном порядке
+        if virtual_skills_list[n] > 0:  # если в скилл n что-то вписано (индекс не 0) то два варианта:
+            if virtual_skills_list.count(virtual_skills_list[n]) > 1:  # это повтор, удалить значение в '' (если не 0)
+                virtual_skills_list[n] = 0
+                if virtual_skills_points_list[n] != '0':
+                    virtual_skills_points_list[n] = ''
+            else:  # это не повтор, проверить значение, 0 - не менять, '' - генерировать, 22 - не емнять
+                if virtual_skills_points_list[n] == '':  # либо ничего
+                    virtual_skills_points_list[n] = randint(skill_left, skill_right)
+                points -= int(virtual_skills_points_list[n])  # вычитаем points
+        # проверка заполненных значений и генерация к ним скилов
+        if virtual_skills_points_list[n] != '0' and virtual_skills_points_list[n] != '' and virtual_skills_list[n] == 0:
+            if NPC_types_dict[this_type]['has_skills']:  # если у НПС вообще есть скилы, то:
+                skill_random = randint(0, 100)
+                if skill_random <= NPC_types_dict[this_type]['melee_percent']:
+                    virtual_skills_list[n] = choice(list(set(melee_index_list) - set(virtual_skills_list)))
+                elif skill_random <= NPC_types_dict[this_type]['ranged_percent'] + \
+                        NPC_types_dict[this_type]['melee_percent']:
+                    virtual_skills_list[n] = choice(list(set(ranged_index_list) - set(virtual_skills_list)))
+                else:
+                    virtual_skills_list[n] = choice(list(set(noncombat_index_list) - set(virtual_skills_list)))
+            else:  # если нет, то нам не важно что рандомить
+                virtual_skills_list[n] = choice(
+                    list(set(noncombat_index_list + ranged_index_list + melee_index_list) - set(virtual_skills_list)))
+
+    widget[i].comboBox_skill_1.setCurrentIndex(virtual_skills_list[1])
+    widget[i].comboBox_skill_2.setCurrentIndex(virtual_skills_list[2])
+    widget[i].comboBox_skill_3.setCurrentIndex(virtual_skills_list[3])
+    widget[i].comboBox_skill_4.setCurrentIndex(virtual_skills_list[4])
+
+    widget[i].lineEdit_skill_1.setText(str(virtual_skills_points_list[1]))
+    widget[i].lineEdit_skill_2.setText(str(virtual_skills_points_list[2]))
+    widget[i].lineEdit_skill_3.setText(str(virtual_skills_points_list[3]))
+    widget[i].lineEdit_skill_4.setText(str(virtual_skills_points_list[4]))
+
+    # Проверка на повторы в выбранных спеллах и генерация значений к имеющимся
+    virtual_spells_list = [None,  # Список индексов спеллов, в котором могут быть повторы
+                           widget[i].comboBox_spell_1.currentIndex(),
+                           widget[i].comboBox_spell_2.currentIndex(),
+                           widget[i].comboBox_spell_3.currentIndex(),
+                           widget[i].comboBox_spell_4.currentIndex(),
+                           widget[i].comboBox_spell_5.currentIndex()]
+    virtual_spells_points_list = [None,  # Список значений спелов
+                                  widget[i].lineEdit_spell_1.text(),
+                                  widget[i].lineEdit_spell_2.text(),
+                                  widget[i].lineEdit_spell_3.text(),
+                                  widget[i].lineEdit_spell_4.text(),
+                                  widget[i].lineEdit_spell_5.text()]
+    for n in range(len(virtual_spells_list) - 1, 0, -1):  # поверка в обратном порядке
+        if virtual_spells_list[n] > 0:  # если в спелл n что-то вписано (индекс не 0) то два варианта:
+            if virtual_spells_list.count(virtual_spells_list[n]) > 1:  # это повтор, удалить значение в '' (если не 0)
+                virtual_spells_list[n] = 0
+                if virtual_spells_points_list[n] != '0':
+                    virtual_spells_points_list[n] = ''
+            else:  # это не повтор, проверить значение, 0 - не менять, '' - генерировать, 22 - не емнять
+                if virtual_spells_points_list[n] == '':  # либо ничего
+                    virtual_spells_points_list[n] = randint(spell_left, spell_right)
+                points -= int(virtual_spells_points_list[n])  # вычитаем points
+        # проверка заполненных значений и генерация к ним спелов
+        if virtual_spells_points_list[n] != '0' and virtual_spells_points_list[n] != '' and virtual_spells_list[n] == 0:
+            virtual_spells_list[n] = choice(list(set(spells_index_list) - set(virtual_spells_list)))
+
+    widget[i].comboBox_spell_1.setCurrentIndex(virtual_spells_list[1])
+    widget[i].comboBox_spell_2.setCurrentIndex(virtual_spells_list[2])
+    widget[i].comboBox_spell_3.setCurrentIndex(virtual_spells_list[3])
+    widget[i].comboBox_spell_4.setCurrentIndex(virtual_spells_list[4])
+    widget[i].comboBox_spell_5.setCurrentIndex(virtual_spells_list[5])
+
+    widget[i].lineEdit_spell_1.setText(str(virtual_spells_points_list[1]))
+    widget[i].lineEdit_spell_2.setText(str(virtual_spells_points_list[2]))
+    widget[i].lineEdit_spell_3.setText(str(virtual_spells_points_list[3]))
+    widget[i].lineEdit_spell_4.setText(str(virtual_spells_points_list[4]))
+    widget[i].lineEdit_spell_5.setText(str(virtual_spells_points_list[5]))
+
+    # Генерация случайных скиллов и спеллов циклом
+    if (NPC_types_dict[this_type]['has_skills'] or NPC_types_dict[this_type]['has_spells']) \
+            and ('' in virtual_spells_points_list or '' in virtual_skills_points_list) \
+            and points > 0:
+        while points > 0:
+            # (если НПС может иметь скилы И места есть)
+            # И (НПС не может иметь спеллы ИЛИ удачный проброс
+            # ИЛИ места в спелах уже нет
+            if (NPC_types_dict[this_type]['has_skills'] == 1 and '' in virtual_skills_points_list) and \
+                    (NPC_types_dict[this_type]['has_spells'] == 0 or randint(1, 100) <= NPC_types_dict[this_type][
+                        'skill_or_spell']
+                     or '' not in virtual_spells_points_list):
+                free_skill_index = virtual_skills_points_list.index('')
+                skill_random = randint(0, 100)
+                if skill_random <= NPC_types_dict[this_type]['melee_percent']:
+                    virtual_skills_list[free_skill_index] = choice(
+                        list(set(melee_index_list) - set(virtual_skills_list)))
+                elif skill_random <= NPC_types_dict[this_type]['ranged_percent'] + \
+                        NPC_types_dict[this_type]['melee_percent']:
+                    virtual_skills_list[free_skill_index] = choice(
+                        list(set(ranged_index_list) - set(virtual_skills_list)))
+                else:
+                    virtual_skills_list[free_skill_index] = choice(
+                        list(set(noncombat_index_list) - set(virtual_skills_list)))
+                randint_skills_points = randint(skill_left, skill_right)
+                virtual_skills_points_list[free_skill_index] = randint_skills_points
+                points -= randint_skills_points
+            # если НПС может иметь спеллы И свободные места ещё есть
+            elif NPC_types_dict[this_type]['has_spells'] == 1 and '' in virtual_spells_points_list:
+                free_spell_index = virtual_spells_points_list.index('')
+                virtual_spells_list[free_spell_index] = choice(list(set(spells_index_list) - set(virtual_spells_list)))
+                randint_spells_points = randint(spell_left, spell_right)
+                virtual_spells_points_list[free_spell_index] = randint_spells_points
+                points -= randint_spells_points
+            else:
+                break
+
+    widget[i].comboBox_skill_1.setCurrentIndex(virtual_skills_list[1])
+    widget[i].comboBox_skill_2.setCurrentIndex(virtual_skills_list[2])
+    widget[i].comboBox_skill_3.setCurrentIndex(virtual_skills_list[3])
+    widget[i].comboBox_skill_4.setCurrentIndex(virtual_skills_list[4])
+    widget[i].lineEdit_skill_1.setText(str(virtual_skills_points_list[1]))
+    widget[i].lineEdit_skill_2.setText(str(virtual_skills_points_list[2]))
+    widget[i].lineEdit_skill_3.setText(str(virtual_skills_points_list[3]))
+    widget[i].lineEdit_skill_4.setText(str(virtual_skills_points_list[4]))
+
+    widget[i].comboBox_spell_1.setCurrentIndex(virtual_spells_list[1])
+    widget[i].comboBox_spell_2.setCurrentIndex(virtual_spells_list[2])
+    widget[i].comboBox_spell_3.setCurrentIndex(virtual_spells_list[3])
+    widget[i].comboBox_spell_4.setCurrentIndex(virtual_spells_list[4])
+    widget[i].comboBox_spell_5.setCurrentIndex(virtual_spells_list[5])
+    widget[i].lineEdit_spell_1.setText(str(virtual_spells_points_list[1]))
+    widget[i].lineEdit_spell_2.setText(str(virtual_spells_points_list[2]))
+    widget[i].lineEdit_spell_3.setText(str(virtual_spells_points_list[3]))
+    widget[i].lineEdit_spell_4.setText(str(virtual_spells_points_list[4]))
+    widget[i].lineEdit_spell_5.setText(str(virtual_spells_points_list[5]))
+
+    # Проверка на повторы в выбранных талантах и их заполнение
+    virtual_talents_list = [None,  # Выбранный вписок индексов талантов, в котором могут быть ошибки
+                            widget[i].comboBox_talent_1.currentIndex(),
+                            widget[i].comboBox_talent_2.currentIndex()]
+    for n in range(len(virtual_talents_list) - 1, 1, -1):  # поверка в обратном порядке
+        if virtual_talents_list[n] > 0 and virtual_talents_list.count(virtual_talents_list[n]) > 1:
+            virtual_talents_list[n] = 0
+    widget[i].comboBox_talent_1.setCurrentIndex(virtual_talents_list[1])
+    widget[i].comboBox_talent_2.setCurrentIndex(virtual_talents_list[2])
+
+    # сформируем характеристики
+    if len(widget[i].lineEdit_physique.text()) == 0:
+        this_physique = (NPC_types_dict[this_type]['base_physique'] + might_or_magic * 2) * class_factor
+        if this_physique > 20:
+            this_physique = 20
+        widget[i].lineEdit_physique.setText(str(this_physique))
+    else:
+        this_physique = int(widget[i].lineEdit_physique.text())
+
+    if len(widget[i].lineEdit_intelligence.text()) == 0:
+        this_intelligence = (NPC_types_dict[this_type]['base_intelligence'] + (1 - might_or_magic) * 2) * class_factor
+        if this_intelligence > 20:
+            this_intelligence = 20
+        widget[i].lineEdit_intelligence.setText(str(this_intelligence))
+    else:
+        this_intelligence = int(widget[i].lineEdit_intelligence.text())
+
+    max_skill_points = 0
+    for n in virtual_skills_points_list:
+        if n and n != '' and int(n) > max_skill_points:
+            max_skill_points = n  # мастерство определяется половиной от максимального навыка
+
+    if len(widget[i].lineEdit_mastery.text()) == 0:
+        if NPC_types_dict[this_type]['base_mastery'] + might_or_magic + class_factor <= int(max_skill_points / 2):
+            this_mastery = int(max_skill_points / 2)
+        else:
+            this_mastery = NPC_types_dict[this_type]['base_mastery'] + might_or_magic + class_factor
+        if this_mastery > 20:
+            this_mastery = 20
+        widget[i].lineEdit_mastery.setText(str(this_mastery))
+    else:
+        this_mastery = int(widget[i].lineEdit_mastery.text())
 
 
 def pushbutton_reset(i: int):  # i - widget number
@@ -1126,8 +1342,8 @@ def pushbutton_d20_spell_5(i: int):  # i - widget number
 
 def main():
     global widget, WidgetNPС, widgets_counter, main_menu, person_ru, text_ru
-    person_ru = Person('ru') # объект Person для генерации личных данных NPC
-    text_ru = Text('ru') # объект для генерации некотрых слов
+    person_ru = Person('ru')  # объект Person для генерации личных данных NPC
+    text_ru = Text('ru')  # объект для генерации некотрых слов
     app = QtWidgets.QApplication(sys.argv)  # init application
     MainWindow = QtWidgets.QMainWindow()  # Create form main menu создание формы окна главного меню
     widgets_counter = 0
