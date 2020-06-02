@@ -1,4 +1,5 @@
 import sys
+from math import ceil, floor
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui_main_menu import Ui_MainWindow
 from ui_NPC_widget import Ui_NPC_Widget
@@ -6,8 +7,9 @@ from mimesis import Person
 from mimesis.enums import Gender
 from mimesis import Text
 from random import randint, choice
-from store import NPC_types_dict, weapons_types, spells_dict, talents_dict, skills_dict, skills_list, melee_index_list, \
-    ranged_index_list, noncombat_index_list, spells_list, spells_index_list
+from store import NPC_types_dict, weapons_dict, weapons_list, spells_dict, talents_dict, skills_dict, skills_list, \
+    melee_index_list, ranged_index_list, noncombat_index_list, spells_list, spells_index_list, talents_index_list, \
+    plate_list, plate_dict, NPC_types_list
 
 # под этим условием лежит сегмет программы, содержащий функции кнопок, передающие номер окна в действующую функцию
 # и функцию инцииализации всех кнопок виджета
@@ -1085,18 +1087,45 @@ def pushbutton_generation(i: int):  # i - widget number
     if spell_right > 20:
         spell_right = 20
 
-    # Проверка на повторы в выбранных скилах и генерация значений к имеющимся
+    # Проверка на повторы в выбранных скилах и генерация значений к имеющемуся оружию
     points = this_lvl
+    virtual_skills_name_list = [None,  # Список индексов скиллов, в котором могут быть повторы
+                                widget[i].comboBox_skill_1.currentText(),
+                                widget[i].comboBox_skill_2.currentText(),
+                                widget[i].comboBox_skill_3.currentText(),
+                                widget[i].comboBox_skill_4.currentText()]
+
     virtual_skills_list = [None,  # Список индексов скиллов, в котором могут быть повторы
                            widget[i].comboBox_skill_1.currentIndex(),
                            widget[i].comboBox_skill_2.currentIndex(),
                            widget[i].comboBox_skill_3.currentIndex(),
                            widget[i].comboBox_skill_4.currentIndex()]
+
+    for n in range(1, len(virtual_skills_list)):  # сгенерируем скилы к выбранному оружию
+        if virtual_skills_list[n] == 0 and widget[i].comboBox_weapon_1.currentText() not in ['', 'Занято', 'Щит'] \
+                and weapons_dict[widget[i].comboBox_weapon_1.currentText()]['skill'] not in virtual_skills_name_list:
+            virtual_skills_name_list[n] = weapons_dict[widget[i].comboBox_weapon_1.currentText()]['skill']
+        elif virtual_skills_list[n] == 0 and widget[i].comboBox_weapon_2.currentText() not in ['', 'Занято', 'Щит'] \
+                and weapons_dict[widget[i].comboBox_weapon_2.currentText()]['skill'] not in virtual_skills_name_list:
+            virtual_skills_name_list[n] = weapons_dict[widget[i].comboBox_weapon_2.currentText()]['skill']
+
+    widget[i].comboBox_skill_1.setCurrentText(virtual_skills_name_list[1])
+    widget[i].comboBox_skill_2.setCurrentText(virtual_skills_name_list[2])
+    widget[i].comboBox_skill_3.setCurrentText(virtual_skills_name_list[3])
+    widget[i].comboBox_skill_4.setCurrentText(virtual_skills_name_list[4])
+
+    virtual_skills_list = [None,  # Список индексов скиллов, в котором могут быть повторы
+                           widget[i].comboBox_skill_1.currentIndex(),
+                           widget[i].comboBox_skill_2.currentIndex(),
+                           widget[i].comboBox_skill_3.currentIndex(),
+                           widget[i].comboBox_skill_4.currentIndex()]
+
     virtual_skills_points_list = [None,  # Список значений скиллов
                                   widget[i].lineEdit_skill_1.text(),
                                   widget[i].lineEdit_skill_2.text(),
                                   widget[i].lineEdit_skill_3.text(),
                                   widget[i].lineEdit_skill_4.text()]
+
     for n in range(len(virtual_skills_list) - 1, 0, -1):  # поверка в обратном порядке
         if virtual_skills_list[n] > 0:  # если в скилл n что-то вписано (индекс не 0) то два варианта:
             if virtual_skills_list.count(virtual_skills_list[n]) > 1:  # это повтор, удалить значение в '' (если не 0)
@@ -1110,7 +1139,7 @@ def pushbutton_generation(i: int):  # i - widget number
         # проверка заполненных значений и генерация к ним скилов
         if virtual_skills_points_list[n] != '0' and virtual_skills_points_list[n] != '' and virtual_skills_list[n] == 0:
             if NPC_types_dict[this_type]['has_skills']:  # если у НПС вообще есть скилы, то:
-                skill_random = randint(0, 100)
+                skill_random = randint(1, 100)
                 if skill_random <= NPC_types_dict[this_type]['melee_percent']:
                     virtual_skills_list[n] = choice(list(set(melee_index_list) - set(virtual_skills_list)))
                 elif skill_random <= NPC_types_dict[this_type]['ranged_percent'] + \
@@ -1184,7 +1213,7 @@ def pushbutton_generation(i: int):  # i - widget number
                         'skill_or_spell']
                      or '' not in virtual_spells_points_list):
                 free_skill_index = virtual_skills_points_list.index('')
-                skill_random = randint(0, 100)
+                skill_random = randint(1, 100)
                 if skill_random <= NPC_types_dict[this_type]['melee_percent']:
                     virtual_skills_list[free_skill_index] = choice(
                         list(set(melee_index_list) - set(virtual_skills_list)))
@@ -1228,7 +1257,13 @@ def pushbutton_generation(i: int):  # i - widget number
     widget[i].lineEdit_spell_4.setText(str(virtual_spells_points_list[4]))
     widget[i].lineEdit_spell_5.setText(str(virtual_spells_points_list[5]))
 
-    # Проверка на повторы в выбранных талантах и их заполнение
+    virtual_skills_name_list = [None,  # Список индексов скиллов, в котором могут быть повторы
+                                widget[i].comboBox_skill_1.currentText(),
+                                widget[i].comboBox_skill_2.currentText(),
+                                widget[i].comboBox_skill_3.currentText(),
+                                widget[i].comboBox_skill_4.currentText()]
+
+    # Проверка на повторы в выбранных талантах
     virtual_talents_list = [None,  # Выбранный вписок индексов талантов, в котором могут быть ошибки
                             widget[i].comboBox_talent_1.currentIndex(),
                             widget[i].comboBox_talent_2.currentIndex()]
@@ -1238,29 +1273,35 @@ def pushbutton_generation(i: int):  # i - widget number
     widget[i].comboBox_talent_1.setCurrentIndex(virtual_talents_list[1])
     widget[i].comboBox_talent_2.setCurrentIndex(virtual_talents_list[2])
 
+    # Формирование талантов
+    for n in range(1, len(virtual_talents_list)):  # поверка от 1-го
+        if virtual_talents_list[n] == 0:  # если индекс устанволен на 0 (есть место свободное)
+            # если среди навыков выбраны единоборства и ни одно из усилилений единоборства не присутсвует:
+            if 1 in virtual_skills_list and 1 not in virtual_talents_list and 2 not in virtual_talents_list:
+                virtual_talents_list[n] = randint(1, 2)  # !!! если список поменяется, могут смениться индексы !!!
+            if virtual_talents_list[n] == 0 and randint(1, 9) <= class_factor ** 2:
+                virtual_talents_list[n] = choice(list(set(talents_index_list) - set(virtual_talents_list)))
+    widget[i].comboBox_talent_1.setCurrentIndex(virtual_talents_list[1])
+    widget[i].comboBox_talent_2.setCurrentIndex(virtual_talents_list[2])
+
     # сформируем характеристики
     if len(widget[i].lineEdit_physique.text()) == 0:
         this_physique = (NPC_types_dict[this_type]['base_physique'] + might_or_magic * 2) * class_factor
         if this_physique > 20:
             this_physique = 20
         widget[i].lineEdit_physique.setText(str(this_physique))
-    else:
-        this_physique = int(widget[i].lineEdit_physique.text())
 
     if len(widget[i].lineEdit_intelligence.text()) == 0:
         this_intelligence = (NPC_types_dict[this_type]['base_intelligence'] + (1 - might_or_magic) * 2) * class_factor
         if this_intelligence > 20:
             this_intelligence = 20
         widget[i].lineEdit_intelligence.setText(str(this_intelligence))
-    else:
-        this_intelligence = int(widget[i].lineEdit_intelligence.text())
-
-    max_skill_points = 0
-    for n in virtual_skills_points_list:
-        if n and n != '' and int(n) > max_skill_points:
-            max_skill_points = n  # мастерство определяется половиной от максимального навыка
 
     if len(widget[i].lineEdit_mastery.text()) == 0:
+        max_skill_points = 0
+        for n in virtual_skills_points_list:
+            if n and n != '' and int(n) > max_skill_points:
+                max_skill_points = int(n)  # мастерство определяется половиной от максимального навыка
         if NPC_types_dict[this_type]['base_mastery'] + might_or_magic + class_factor <= int(max_skill_points / 2):
             this_mastery = int(max_skill_points / 2)
         else:
@@ -1268,8 +1309,75 @@ def pushbutton_generation(i: int):  # i - widget number
         if this_mastery > 20:
             this_mastery = 20
         widget[i].lineEdit_mastery.setText(str(this_mastery))
+
+    # если оружие 1 не выбрано !!! Происходит бабуйня при преднастроке второй руки!!! FIX IT!!!
+    weapon_mod = randint(1, 100)
+    if weapon_mod <= NPC_types_dict[this_type]['weapon_percent']:  # если оружие НПС может брать
+        if widget[i].comboBox_weapon_1.currentIndex() == 0:
+            # поиск максимального боевого навыка:
+            max_battle_skill_points = 0
+            max_battle_skill = 'Единоборства'  # отвечает за метательное, бой без оружия, бой в каcтетах
+            for n in range(1, len(virtual_skills_name_list)):
+                if virtual_skills_name_list[n] in (skills_dict['Melee'] + skills_dict['Ranged']) and int(
+                        virtual_skills_points_list[n]) > max_battle_skill_points:
+                    max_battle_skill_points = int(virtual_skills_points_list[n])
+                    max_battle_skill = virtual_skills_name_list[n]
+            # поиск оружия, подходящего под скилл
+            random_weapons_list = []
+            for weapon in weapons_list:
+                if weapons_dict[weapon]['skill'] == max_battle_skill:
+                    random_weapons_list.append(weapon)
+            if len(random_weapons_list) == 0:
+                random_weapons_list.append('Без оружия')
+            this_weapon_1 = choice(random_weapons_list)
+            widget[i].comboBox_weapon_1.setCurrentText(this_weapon_1)
+            # подберём оружие для второй руки:
+            if not weapons_dict[this_weapon_1]['two-handed'] and widget[i].comboBox_weapon_2.currentIndex() == 0:
+                shield_mod = 1 if randint(1, 100) <= NPC_types_dict[this_type]['shield_percent'] \
+                                  and weapons_dict[this_weapon_1]['skill'] not in ['Единоборства', '1хПистолеты'] \
+                                  and this_weapon_1 != 'Кинжал' else 0
+                this_weapon_2 = choice(random_weapons_list + ['Щит'] * shield_mod)
+                widget[i].comboBox_weapon_2.setCurrentText(this_weapon_2)
+            else:
+                this_weapon_2 = 'Занято'
+                widget[i].comboBox_weapon_2.setCurrentText(this_weapon_2)
     else:
-        this_mastery = int(widget[i].lineEdit_mastery.text())
+        this_weapon_1 = 'Без оружия'
+        widget[i].comboBox_weapon_1.setCurrentText(this_weapon_1)
+        this_weapon_2 = 'Без оружия'
+        widget[i].comboBox_weapon_2.setCurrentText(this_weapon_2)
+
+    this_weapon_1 = widget[i].comboBox_weapon_1.currentText()
+    this_weapon_2 = widget[i].comboBox_weapon_2.currentText()
+    # выставим оружию получившиеся настройки
+    if this_weapon_1 != 'Занято' and this_weapon_1 != '':
+        widget[i].lineEdit_weapon1.setText(weapons_dict[this_weapon_1]['name'])
+        widget[i].lineEdit_weapon1_magic_damage.setText(str(weapons_dict[this_weapon_1]['magic_damage']))
+        widget[i].lineEdit_weapon1_armor_damage.setText(str(weapons_dict[this_weapon_1]['armor_damage']))
+        widget[i].lineEdit_weapon1_penetration_damage.setText(str(weapons_dict[this_weapon_1]['penetration_damage']))
+        widget[i].lineEdit_weapon1_health_damage.setText(str(weapons_dict[this_weapon_1]['health_damage']))
+    if this_weapon_2 != 'Занято' and this_weapon_2 != '':
+        widget[i].lineEdit_weapon2.setText(weapons_dict[this_weapon_2]['name'])
+        widget[i].lineEdit_weapon2_magic_damage.setText(str(weapons_dict[this_weapon_2]['magic_damage']))
+        widget[i].lineEdit_weapon2_armor_damage.setText(str(weapons_dict[this_weapon_2]['armor_damage']))
+        widget[i].lineEdit_weapon2_penetration_damage.setText(
+            str(weapons_dict[this_weapon_2]['penetration_damage']))
+        widget[i].lineEdit_weapon2_health_damage.setText(str(weapons_dict[this_weapon_2]['health_damage']))
+
+    # если класс брони (как шкура дракона или рыцарский доспех) не выбрано
+    if widget[i].comboBox_plate.currentIndex() == 0 and randint(1, 100) <= NPC_types_dict[this_type]['armor_percent']:
+        this_plate = choice(
+            plate_list[floor((class_factor - 1) * len(plate_list) / 3):ceil(class_factor * len(plate_list) / 3)])
+        widget[i].comboBox_plate.setCurrentText(this_plate)
+        # обозначим броню
+        if widget[i].lineEdit_armor.text() == '':
+            widget[i].lineEdit_armor.setText(str(plate_dict[this_plate]))
+
+    # обозначим здоровье
+    if widget[i].lineEdit_health.text() == '':
+        widget[i].lineEdit_health.setText(str(widget[i].lineEdit_physique.text()))
+
+
 
 
 def pushbutton_reset(i: int):  # i - widget number
@@ -1353,7 +1461,7 @@ def main():
         widget.append(Ui_NPC_Widget())
         WidgetNPС.append(QtWidgets.QWidget())
         widget[i].setupUi(WidgetNPС[i])
-        widget[i].comboBox_type.addItems(NPC_types_dict)
+        widget[i].comboBox_type.addItems(NPC_types_list)
         widget[i].comboBox_talent_1.addItems(talents_dict)
         widget[i].comboBox_talent_2.addItems(talents_dict)
         widget[i].comboBox_skill_1.addItems(skills_list)
@@ -1365,6 +1473,9 @@ def main():
         widget[i].comboBox_spell_3.addItems(spells_dict)
         widget[i].comboBox_spell_4.addItems(spells_dict)
         widget[i].comboBox_spell_5.addItems(spells_dict)
+        widget[i].comboBox_weapon_1.addItems(weapons_list)
+        widget[i].comboBox_weapon_2.addItems(weapons_list)
+        widget[i].comboBox_plate.addItems(plate_list)
     init_widget_buttons()
     main_menu = Ui_MainWindow()
     main_menu.setupUi(MainWindow)
