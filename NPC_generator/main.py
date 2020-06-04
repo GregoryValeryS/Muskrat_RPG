@@ -295,483 +295,484 @@ if True:
 
 
     def pushbutton_d20_physique_0():
-        pushbutton_d20_physique(0)
+        D20_roll(0, 'Телосложение',
+                 widget[0].lineEdit_physique.text())  # i: int, characteristic: str, characteristic_value: str
 
 
     def pushbutton_d20_physique_1():
-        pushbutton_d20_physique(1)
+        D20_roll(1, 'Телосложение', widget[1].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_2():
-        pushbutton_d20_physique(2)
+        D20_roll(2, 'Телосложение', widget[2].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_3():
-        pushbutton_d20_physique(3)
+        D20_roll(3, 'Телосложение', widget[3].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_4():
-        pushbutton_d20_physique(4)
+        D20_roll(4, 'Телосложение', widget[4].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_5():
-        pushbutton_d20_physique(5)
+        D20_roll(5, 'Телосложение', widget[5].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_6():
-        pushbutton_d20_physique(6)
+        D20_roll(6, 'Телосложение', widget[6].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_7():
-        pushbutton_d20_physique(7)
+        D20_roll(7, 'Телосложение', widget[7].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_8():
-        pushbutton_d20_physique(8)
+        D20_roll(8, 'Телосложение', widget[8].lineEdit_physique.text())
 
 
     def pushbutton_d20_physique_9():
-        pushbutton_d20_physique(9)
+        D20_roll(9, 'Телосложение', widget[9].lineEdit_physique.text())
 
 
     def pushbutton_d20_mastery_0():
-        pushbutton_d20_mastery(0)
+        D20_roll(0, 'Мастерство', widget[0].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_1():
-        pushbutton_d20_mastery(1)
+        D20_roll(1, 'Мастерство', widget[1].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_2():
-        pushbutton_d20_mastery(2)
+        D20_roll(2, 'Мастерство', widget[2].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_3():
-        pushbutton_d20_mastery(3)
+        D20_roll(3, 'Мастерство', widget[3].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_4():
-        pushbutton_d20_mastery(4)
+        D20_roll(4, 'Мастерство', widget[4].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_5():
-        pushbutton_d20_mastery(5)
+        D20_roll(5, 'Мастерство', widget[5].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_6():
-        pushbutton_d20_mastery(6)
+        D20_roll(6, 'Мастерство', widget[6].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_7():
-        pushbutton_d20_mastery(7)
+        D20_roll(7, 'Мастерство', widget[7].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_8():
-        pushbutton_d20_mastery(8)
+        D20_roll(8, 'Мастерство', widget[8].lineEdit_mastery.text())
 
 
     def pushbutton_d20_mastery_9():
-        pushbutton_d20_mastery(9)
+        D20_roll(9, 'Мастерство', widget[9].lineEdit_mastery.text())
 
 
     def pushbutton_d20_skill_1_0():
-        pushbutton_d20_skill_1(0)
+        D20_roll(0, widget[0].comboBox_skill_1.currentText(), widget[0].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_1():
-        pushbutton_d20_skill_1(1)
+        D20_roll(1, widget[1].comboBox_skill_1.currentText(), widget[1].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_2():
-        pushbutton_d20_skill_1(2)
+        D20_roll(2, widget[2].comboBox_skill_1.currentText(), widget[2].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_3():
-        pushbutton_d20_skill_1(3)
+        D20_roll(3, widget[3].comboBox_skill_1.currentText(), widget[3].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_4():
-        pushbutton_d20_skill_1(4)
+        D20_roll(4, widget[4].comboBox_skill_1.currentText(), widget[4].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_5():
-        pushbutton_d20_skill_1(5)
+        D20_roll(5, widget[5].comboBox_skill_1.currentText(), widget[5].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_6():
-        pushbutton_d20_skill_1(6)
+        D20_roll(6, widget[6].comboBox_skill_1.currentText(), widget[6].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_7():
-        pushbutton_d20_skill_1(7)
+        D20_roll(7, widget[7].comboBox_skill_1.currentText(), widget[7].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_8():
-        pushbutton_d20_skill_1(8)
+        D20_roll(8, widget[8].comboBox_skill_1.currentText(), widget[8].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_1_9():
-        pushbutton_d20_skill_1(9)
+        D20_roll(9, widget[9].comboBox_skill_1.currentText(), widget[9].lineEdit_skill_1.text())
 
 
     def pushbutton_d20_skill_2_0():
-        pushbutton_d20_skill_2(0)
+        D20_roll(0, widget[0].comboBox_skill_2.currentText(), widget[0].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_1():
-        pushbutton_d20_skill_2(1)
+        D20_roll(1, widget[1].comboBox_skill_2.currentText(), widget[1].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_2():
-        pushbutton_d20_skill_2(2)
+        D20_roll(2, widget[2].comboBox_skill_2.currentText(), widget[2].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_3():
-        pushbutton_d20_skill_2(3)
+        D20_roll(3, widget[3].comboBox_skill_2.currentText(), widget[3].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_4():
-        pushbutton_d20_skill_2(4)
+        D20_roll(4, widget[4].comboBox_skill_2.currentText(), widget[4].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_5():
-        pushbutton_d20_skill_2(5)
+        D20_roll(5, widget[5].comboBox_skill_2.currentText(), widget[5].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_6():
-        pushbutton_d20_skill_2(6)
+        D20_roll(6, widget[6].comboBox_skill_2.currentText(), widget[6].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_7():
-        pushbutton_d20_skill_2(7)
+        D20_roll(7, widget[7].comboBox_skill_2.currentText(), widget[7].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_8():
-        pushbutton_d20_skill_2(8)
+        D20_roll(8, widget[8].comboBox_skill_2.currentText(), widget[8].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_2_9():
-        pushbutton_d20_skill_2(9)
+        D20_roll(9, widget[9].comboBox_skill_2.currentText(), widget[9].lineEdit_skill_2.text())
 
 
     def pushbutton_d20_skill_3_0():
-        pushbutton_d20_skill_3(0)
+        D20_roll(0, widget[0].comboBox_skill_3.currentText(), widget[0].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_1():
-        pushbutton_d20_skill_3(1)
+        D20_roll(1, widget[1].comboBox_skill_3.currentText(), widget[1].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_2():
-        pushbutton_d20_skill_3(2)
+        D20_roll(2, widget[2].comboBox_skill_3.currentText(), widget[2].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_3():
-        pushbutton_d20_skill_3(3)
+        D20_roll(3, widget[3].comboBox_skill_3.currentText(), widget[3].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_4():
-        pushbutton_d20_skill_3(4)
+        D20_roll(4, widget[4].comboBox_skill_3.currentText(), widget[4].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_5():
-        pushbutton_d20_skill_3(5)
+        D20_roll(5, widget[5].comboBox_skill_3.currentText(), widget[5].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_6():
-        pushbutton_d20_skill_3(6)
+        D20_roll(6, widget[6].comboBox_skill_3.currentText(), widget[6].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_7():
-        pushbutton_d20_skill_3(7)
+        D20_roll(7, widget[7].comboBox_skill_3.currentText(), widget[7].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_8():
-        pushbutton_d20_skill_3(8)
+        D20_roll(8, widget[8].comboBox_skill_3.currentText(), widget[8].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_3_9():
-        pushbutton_d20_skill_3(9)
+        D20_roll(9, widget[9].comboBox_skill_3.currentText(), widget[9].lineEdit_skill_3.text())
 
 
     def pushbutton_d20_skill_4_0():
-        pushbutton_d20_skill_4(0)
+        D20_roll(0, widget[0].comboBox_skill_4.currentText(), widget[0].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_1():
-        pushbutton_d20_skill_4(1)
+        D20_roll(1, widget[1].comboBox_skill_4.currentText(), widget[1].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_2():
-        pushbutton_d20_skill_4(2)
+        D20_roll(2, widget[2].comboBox_skill_4.currentText(), widget[2].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_3():
-        pushbutton_d20_skill_4(3)
+        D20_roll(3, widget[3].comboBox_skill_4.currentText(), widget[3].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_4():
-        pushbutton_d20_skill_4(4)
+        D20_roll(4, widget[4].comboBox_skill_4.currentText(), widget[4].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_5():
-        pushbutton_d20_skill_4(5)
+        D20_roll(5, widget[5].comboBox_skill_4.currentText(), widget[5].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_6():
-        pushbutton_d20_skill_4(6)
+        D20_roll(6, widget[6].comboBox_skill_4.currentText(), widget[6].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_7():
-        pushbutton_d20_skill_4(7)
+        D20_roll(7, widget[7].comboBox_skill_4.currentText(), widget[7].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_8():
-        pushbutton_d20_skill_4(8)
+        D20_roll(8, widget[8].comboBox_skill_4.currentText(), widget[8].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_skill_4_9():
-        pushbutton_d20_skill_4(9)
+        D20_roll(9, widget[9].comboBox_skill_4.currentText(), widget[9].lineEdit_skill_4.text())
 
 
     def pushbutton_d20_intelligence_0():
-        pushbutton_d20_intelligence(0)
+        D20_roll(0, 'Интеллект', widget[0].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_1():
-        pushbutton_d20_intelligence(1)
+        D20_roll(1, 'Интеллект', widget[1].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_2():
-        pushbutton_d20_intelligence(2)
+        D20_roll(2, 'Интеллект', widget[2].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_3():
-        pushbutton_d20_intelligence(3)
+        D20_roll(3, 'Интеллект', widget[3].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_4():
-        pushbutton_d20_intelligence(4)
+        D20_roll(4, 'Интеллект', widget[4].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_5():
-        pushbutton_d20_intelligence(5)
+        D20_roll(5, 'Интеллект', widget[5].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_6():
-        pushbutton_d20_intelligence(6)
+        D20_roll(6, 'Интеллект', widget[6].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_7():
-        pushbutton_d20_intelligence(7)
+        D20_roll(7, 'Интеллект', widget[7].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_8():
-        pushbutton_d20_intelligence(8)
+        D20_roll(8, 'Интеллект', widget[8].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_intelligence_9():
-        pushbutton_d20_intelligence(9)
+        D20_roll(9, 'Интеллект', widget[9].lineEdit_intelligence.text())
 
 
     def pushbutton_d20_spell_1_0():
-        pushbutton_d20_spell_1(0)
+        D20_roll(0, widget[0].comboBox_spell_1.currentText(), widget[0].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_1():
-        pushbutton_d20_spell_1(1)
+        D20_roll(1, widget[1].comboBox_spell_1.currentText(), widget[1].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_2():
-        pushbutton_d20_spell_1(2)
+        D20_roll(2, widget[2].comboBox_spell_1.currentText(), widget[2].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_3():
-        pushbutton_d20_spell_1(3)
+        D20_roll(3, widget[3].comboBox_spell_1.currentText(), widget[3].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_4():
-        pushbutton_d20_spell_1(4)
+        D20_roll(4, widget[4].comboBox_spell_1.currentText(), widget[4].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_5():
-        pushbutton_d20_spell_1(5)
+        D20_roll(5, widget[5].comboBox_spell_1.currentText(), widget[5].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_6():
-        pushbutton_d20_spell_1(6)
+        D20_roll(6, widget[6].comboBox_spell_1.currentText(), widget[6].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_7():
-        pushbutton_d20_spell_1(7)
+        D20_roll(7, widget[7].comboBox_spell_1.currentText(), widget[7].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_8():
-        pushbutton_d20_spell_1(8)
+        D20_roll(8, widget[8].comboBox_spell_1.currentText(), widget[8].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_1_9():
-        pushbutton_d20_spell_1(9)
+        D20_roll(9, widget[9].comboBox_spell_1.currentText(), widget[9].lineEdit_spell_1.text())
 
 
     def pushbutton_d20_spell_2_0():
-        pushbutton_d20_spell_2(0)
+        D20_roll(0, widget[0].comboBox_spell_2.currentText(), widget[0].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_1():
-        pushbutton_d20_spell_2(1)
+        D20_roll(1, widget[1].comboBox_spell_2.currentText(), widget[1].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_2():
-        pushbutton_d20_spell_2(2)
+        D20_roll(2, widget[2].comboBox_spell_2.currentText(), widget[2].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_3():
-        pushbutton_d20_spell_2(3)
+        D20_roll(3, widget[3].comboBox_spell_2.currentText(), widget[3].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_4():
-        pushbutton_d20_spell_2(4)
+        D20_roll(4, widget[4].comboBox_spell_2.currentText(), widget[4].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_5():
-        pushbutton_d20_spell_2(5)
+        D20_roll(5, widget[5].comboBox_spell_2.currentText(), widget[5].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_6():
-        pushbutton_d20_spell_2(6)
+        D20_roll(6, widget[6].comboBox_spell_2.currentText(), widget[6].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_7():
-        pushbutton_d20_spell_2(7)
+        D20_roll(7, widget[7].comboBox_spell_2.currentText(), widget[7].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_8():
-        pushbutton_d20_spell_2(8)
+        D20_roll(8, widget[8].comboBox_spell_2.currentText(), widget[8].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_2_9():
-        pushbutton_d20_spell_2(9)
+        D20_roll(9, widget[9].comboBox_spell_2.currentText(), widget[9].lineEdit_spell_2.text())
 
 
     def pushbutton_d20_spell_3_0():
-        pushbutton_d20_spell_3(0)
+        D20_roll(0, widget[0].comboBox_spell_3.currentText(), widget[0].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_1():
-        pushbutton_d20_spell_3(1)
+        D20_roll(1, widget[1].comboBox_spell_3.currentText(), widget[1].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_2():
-        pushbutton_d20_spell_3(2)
+        D20_roll(2, widget[2].comboBox_spell_3.currentText(), widget[2].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_3():
-        pushbutton_d20_spell_3(3)
+        D20_roll(3, widget[3].comboBox_spell_3.currentText(), widget[3].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_4():
-        pushbutton_d20_spell_3(4)
+        D20_roll(4, widget[4].comboBox_spell_3.currentText(), widget[4].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_5():
-        pushbutton_d20_spell_3(5)
+        D20_roll(5, widget[5].comboBox_spell_3.currentText(), widget[5].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_6():
-        pushbutton_d20_spell_3(6)
+        D20_roll(6, widget[6].comboBox_spell_3.currentText(), widget[6].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_7():
-        pushbutton_d20_spell_3(7)
+        D20_roll(7, widget[7].comboBox_spell_3.currentText(), widget[7].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_8():
-        pushbutton_d20_spell_3(8)
+        D20_roll(8, widget[8].comboBox_spell_3.currentText(), widget[8].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_3_9():
-        pushbutton_d20_spell_3(9)
+        D20_roll(9, widget[9].comboBox_spell_3.currentText(), widget[9].lineEdit_spell_3.text())
 
 
     def pushbutton_d20_spell_4_0():
-        pushbutton_d20_spell_4(0)
+        D20_roll(0, widget[0].comboBox_spell_4.currentText(), widget[0].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_1():
-        pushbutton_d20_spell_4(1)
+        D20_roll(1, widget[1].comboBox_spell_4.currentText(), widget[1].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_2():
-        pushbutton_d20_spell_4(2)
+        D20_roll(2, widget[2].comboBox_spell_4.currentText(), widget[2].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_3():
-        pushbutton_d20_spell_4(3)
+        D20_roll(3, widget[3].comboBox_spell_4.currentText(), widget[3].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_4():
-        pushbutton_d20_spell_4(4)
+        D20_roll(4, widget[4].comboBox_spell_4.currentText(), widget[4].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_5():
-        pushbutton_d20_spell_4(5)
+        D20_roll(5, widget[5].comboBox_spell_4.currentText(), widget[5].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_6():
-        pushbutton_d20_spell_4(6)
+        D20_roll(6, widget[6].comboBox_spell_4.currentText(), widget[6].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_7():
-        pushbutton_d20_spell_4(7)
+        D20_roll(7, widget[7].comboBox_spell_4.currentText(), widget[7].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_8():
-        pushbutton_d20_spell_4(8)
+        D20_roll(8, widget[8].comboBox_spell_4.currentText(), widget[8].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_4_9():
-        pushbutton_d20_spell_4(9)
+        D20_roll(9, widget[9].comboBox_spell_4.currentText(), widget[9].lineEdit_spell_4.text())
 
 
     def pushbutton_d20_spell_5_0():
-        pushbutton_d20_spell_5(0)
+        D20_roll(0, widget[0].comboBox_spell_5.currentText(), widget[0].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_1():
-        pushbutton_d20_spell_5(1)
+        D20_roll(1, widget[1].comboBox_spell_5.currentText(), widget[1].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_2():
-        pushbutton_d20_spell_5(2)
+        D20_roll(2, widget[2].comboBox_spell_5.currentText(), widget[2].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_3():
-        pushbutton_d20_spell_5(3)
+        D20_roll(3, widget[3].comboBox_spell_5.currentText(), widget[3].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_4():
-        pushbutton_d20_spell_5(4)
+        D20_roll(4, widget[4].comboBox_spell_5.currentText(), widget[4].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_5():
-        pushbutton_d20_spell_5(5)
+        D20_roll(5, widget[5].comboBox_spell_5.currentText(), widget[5].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_6():
-        pushbutton_d20_spell_5(6)
+        D20_roll(6, widget[6].comboBox_spell_5.currentText(), widget[6].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_7():
-        pushbutton_d20_spell_5(7)
+        D20_roll(7, widget[7].comboBox_spell_5.currentText(), widget[7].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_8():
-        pushbutton_d20_spell_5(8)
+        D20_roll(8, widget[8].comboBox_spell_5.currentText(), widget[8].lineEdit_spell_5.text())
 
 
     def pushbutton_d20_spell_5_9():
-        pushbutton_d20_spell_5(9)
+        D20_roll(9, widget[9].comboBox_spell_5.currentText(), widget[9].lineEdit_spell_5.text())
 
 
     def init_widget_buttons():
@@ -997,7 +998,7 @@ def pushbutton_info(i: int):  # i - widget number
 
 
 def pushbutton_generation(i: int):  # i - widget number
-
+    # тут должна стоять защита от дурака!
     # определение типа 0 - не выбрано, 1...len(NPC_types_dict) - остальные типы
     if widget[i].comboBox_type.currentIndex() == 0:  # 0 индекс - ничего не выбрано
         widget[i].comboBox_type.setCurrentIndex(randint(1, len(NPC_types_dict)))  # устанавливает случайное значение
@@ -1045,11 +1046,11 @@ def pushbutton_generation(i: int):  # i - widget number
                 this_nick = f"'{text.swear_word().title()}' "
             else:
                 this_nick = ''
-            if randint(1, 100) <= NPC_types_dict[this_type]['full_name_chance']:  # будет ли полное имя?
-                widget[i].lineEdit_name.setText(f"{this_first_name} {this_nick}{this_last_name}")
+            if randint(1, 100) <= NPC_types_dict[this_type]['full_name_chance']: # будет ли полное имя?
+                    widget[i].lineEdit_name.setText(f"{this_first_name} {this_nick}{this_last_name}")
             else:  # тогда имя или фамилия?
                 if randint(1, 100) <= NPC_types_dict[this_type]['first_name_or_last_name']:
-                    widget[i].lineEdit_name.setText(f"{this_first_name} {this_nick}{this_last_name}")
+                    widget[i].lineEdit_name.setText(f"{this_first_name} {this_nick}")
                 else:
                     widget[i].lineEdit_name.setText(f"{this_last_name} {this_nick}")
         else:
@@ -1378,10 +1379,76 @@ def pushbutton_generation(i: int):  # i - widget number
         widget[i].lineEdit_health.setText(str(widget[i].lineEdit_physique.text()))
 
 
-
-
 def pushbutton_reset(i: int):  # i - widget number
-    pass
+    list_for_reset_lines = [
+        widget[i].lineEdit_physique,
+        widget[i].lineEdit_mastery,
+        widget[i].lineEdit_skill_1,
+        widget[i].lineEdit_skill_2,
+        widget[i].lineEdit_skill_3,
+        widget[i].lineEdit_skill_4,
+        widget[i].lineEdit_intelligence,
+        widget[i].lineEdit_spell_1,
+        widget[i].lineEdit_spell_2,
+        widget[i].lineEdit_spell_3,
+        widget[i].lineEdit_spell_4,
+        widget[i].lineEdit_spell_5,
+        widget[i].lineEdit_weapon1,
+        widget[i].lineEdit_weapon2,
+        widget[i].lineEdit_magic_barrier,
+        widget[i].lineEdit_armor,
+        widget[i].lineEdit_health,
+        widget[i].lineEdit_weapon1_magic_damage,
+        widget[i].lineEdit_weapon1_armor_damage,
+        widget[i].lineEdit_weapon1_penetration_damage,
+        widget[i].lineEdit_weapon1_health_damage,
+        widget[i].lineEdit_weapon2_magic_damage,
+        widget[i].lineEdit_weapon2_armor_damage,
+        widget[i].lineEdit_weapon2_penetration_damage,
+        widget[i].lineEdit_weapon2_health_damage,
+        widget[i].lineEdit_periodic_damage_magic,
+        widget[i].lineEdit_periodic_damage_armor,
+        widget[i].lineEdit_periodic_damage_penetration_damage,
+        widget[i].lineEdit_periodic_damage_health,
+        widget[i].lineEdit_incoming_damage_magic,
+        widget[i].lineEdit_incoming_damage_armor,
+        widget[i].lineEdit_incoming_damage_penetration_damage,
+        widget[i].lineEdit_incoming_damage_health,
+    ]
+
+    for line in list_for_reset_lines:
+        line.clear()
+
+    list_for_reset_combo_boxes = [
+        widget[i].comboBox_weapon_1,
+        widget[i].comboBox_weapon_2,
+        widget[i].comboBox_plate,
+        widget[i].comboBox_talent_1,
+        widget[i].comboBox_talent_2,
+        widget[i].comboBox_skill_1,
+        widget[i].comboBox_skill_2,
+        widget[i].comboBox_skill_3,
+        widget[i].comboBox_skill_4,
+        widget[i].comboBox_spell_1,
+        widget[i].comboBox_spell_2,
+        widget[i].comboBox_spell_3,
+        widget[i].comboBox_spell_4,
+        widget[i].comboBox_spell_5,
+    ]
+
+    for combo_box in list_for_reset_combo_boxes:
+        combo_box.setCurrentIndex(0)
+
+    list_for_reset_radio_buttons = [
+        widget[i].radioButton_might,
+        widget[i].radioButton_magic,
+        widget[i].radioButton_crit,
+        widget[i].radioButton_defense,
+    ]
+
+    for radio_button in list_for_reset_radio_buttons:
+        radio_button.setAutoExclusive(False)
+        radio_button.setChecked(False)
 
 
 def pushbutton_load(i: int):  # i - widget number
@@ -1400,52 +1467,23 @@ def pushbutton_attack(i: int):  # i - widget number
     pass
 
 
-def pushbutton_d20_physique(i: int):  # i - widget number
-    pass
+def D20_roll(i: int, skill: str, skill_value: str):  # i - widget number
+    if skill != '' and skill_value != '' and widget[0].lineEdit_name.text() != '':
+        skill_value = int(skill_value)
+        D20_roll = randint(1, 20)
+        if D20_roll == 1:
+            result = 'Критическая неудача'
+        elif D20_roll == 20:
+            result = 'Максимальный результат! Крит!'
+        elif D20_roll <= (20 - skill_value * 2):  # красная зона
+            result = 'Неудача!'
+        elif D20_roll > (20 - (skill_value-10)*2):  # зелёная зона
+            result = 'Крит!'
+        else:  # серая зона
+            result = 'Номрально'
 
-
-def pushbutton_d20_mastery(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_skill_1(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_skill_2(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_skill_3(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_skill_4(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_intelligence(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_spell_1(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_spell_2(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_spell_3(widget_number: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_spell_4(i: int):  # i - widget number
-    pass
-
-
-def pushbutton_d20_spell_5(i: int):  # i - widget number
-    pass
+        main_menu.textEdit_battlelog.append(f"{widget[i].lineEdit_name.text()} бросает на\n'{skill}' {skill_value}"
+                                            f"\nРезультат броска - {D20_roll}\n{result}\n")
 
 
 def main():
