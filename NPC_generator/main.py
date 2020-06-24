@@ -1072,7 +1072,7 @@ def pushbutton_generation(i: int):  # i - widget number
             might_or_magic = 0
             widget[i].radioButton_magic.setChecked(True)
     else:
-        might_or_magic = int(widget[i].radioButton_might.isChecked())  # 1 - уклон в оружие, 2 - уклон в магию
+        might_or_magic = int(widget[i].radioButton_might.isChecked())  # 1 - уклон в оружие, 0 - уклон в магию
 
     # Установка порогового нижнего и верхнего значений для навыков и спелов
     skill_left = 3 + (class_factor - 1) * 5 + might_or_magic
@@ -1490,15 +1490,18 @@ def main():
     global widget, WidgetNPС, widgets_counter, main_menu, person_ru, text_ru
     person_ru = Person('ru')  # объект Person для генерации личных данных NPC
     text_ru = Text('ru')  # объект для генерации некотрых слов
-    app = QtWidgets.QApplication(sys.argv)  # init application
+    app = QtWidgets.QApplication(sys.argv)  # Create application - инициализация приложения
     MainWindow = QtWidgets.QMainWindow()  # Create form main menu создание формы окна главного меню
     widgets_counter = 0
     widget = []
     WidgetNPС = []
     for i in range(0, 10):  # создаём виджеты NPC от 0 до 9
         widget.append(Ui_NPC_Widget())
+
         WidgetNPС.append(QtWidgets.QWidget())
+
         widget[i].setupUi(WidgetNPС[i])
+
         widget[i].comboBox_type.addItems(NPC_types_list)
         widget[i].comboBox_talent_1.addItems(talents_dict)
         widget[i].comboBox_talent_2.addItems(talents_dict)
@@ -1520,7 +1523,7 @@ def main():
     MainWindow.show()
     main_menu.pushButton_add_NPC.clicked.connect(pushbutton_add_npc)
     main_menu.pushButton_remove_NPC.clicked.connect(pushbutton_remove_npc)
-    sys.exit(app.exec_())
+    sys.exit(app.exec_())  # Run main loop
 
 
 if __name__ == '__main__':
