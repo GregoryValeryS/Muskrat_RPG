@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
-    <height>379</height>
+    <width>561</width>
+    <height>615</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QGroupBox" name="groupBox_add_or_remove_NPC">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>10</y>
-      <width>111</width>
+      <x>420</x>
+      <y>20</y>
+      <width>131</width>
       <height>51</height>
      </rect>
     </property>
@@ -29,11 +29,18 @@
     <widget class="QPushButton" name="pushButton_remove_NPC">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>70</x>
        <y>16</y>
-       <width>41</width>
+       <width>51</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>-</string>
@@ -44,9 +51,16 @@
       <rect>
        <x>10</x>
        <y>16</y>
-       <width>41</width>
+       <width>51</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>+</string>
@@ -58,8 +72,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>261</width>
-      <height>361</height>
+      <width>391</width>
+      <height>601</height>
      </rect>
     </property>
     <property name="title">
@@ -70,8 +84,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>241</width>
-       <height>331</height>
+       <width>371</width>
+       <height>571</height>
       </rect>
      </property>
     </widget>
@@ -79,10 +93,10 @@
    <widget class="QGroupBox" name="loot_generator">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>70</y>
-      <width>111</width>
-      <height>61</height>
+      <x>420</x>
+      <y>80</y>
+      <width>131</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="title">
@@ -91,16 +105,185 @@
     <widget class="QPushButton" name="pushButton_loot">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>41</width>
-       <height>31</height>
+       <x>60</x>
+       <y>50</y>
+       <width>51</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="text">
       <string>Loot!</string>
      </property>
     </widget>
+    <widget class="QComboBox" name="comboBox_trash_elite_legend">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Trash</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Elite</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Legend</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_lvl">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="loot_store">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>190</y>
+      <width>131</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Store</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_store_weapons">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>all weapon</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_store_skills">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>all skills</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_store_spells">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>all spells</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_store_plates">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>all plates</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_store_talents">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>all talents</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_period">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>420</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Period</string>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>370</width>
-    <height>320</height>
+    <width>380</width>
+    <height>345</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,14 @@
   <widget class="QGroupBox" name="groupBox_incoming_damage">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>120</y>
-     <width>171</width>
-     <height>41</height>
+     <x>270</x>
+     <y>138</y>
+     <width>101</width>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 233, 233);</string>
    </property>
    <property name="title">
     <string/>
@@ -28,10 +31,10 @@
    <widget class="QLineEdit" name="lineEdit_incoming_damage_magic">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>2</y>
+      <x>10</x>
+      <y>4</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -47,10 +50,10 @@
    <widget class="QLineEdit" name="lineEdit_incoming_damage_armor">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>2</y>
+      <x>30</x>
+      <y>4</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -66,10 +69,10 @@
    <widget class="QLineEdit" name="lineEdit_incoming_damage_health">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>2</y>
+      <x>70</x>
+      <y>4</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -85,115 +88,17 @@
    <widget class="QLineEdit" name="lineEdit_incoming_damage_penetration_damage">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>2</y>
+      <x>50</x>
+      <y>4</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(195, 166, 166);</string>
+     <string notr="true">background-color: rgb(255, 133, 133);</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_periodic_damage_magic">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>5</y>
-      <width>21</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190, 255);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_periodic_damage_armor">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>5</y>
-      <width>21</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(186, 190, 202);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_periodic_damage_penetration_damage">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>5</y>
-      <width>21</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(195, 166, 166);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_periodic_damage_health">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>5</y>
-      <width>21</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 199, 200);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_periodic">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>20</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string> ~~ periodic ~~</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -202,102 +107,37 @@
    <widget class="QPushButton" name="pushButton_incoming_damage_enter">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>21</y>
-      <width>41</width>
+      <x>60</x>
+      <y>30</y>
+      <width>31</width>
       <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>6</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
-    <property name="text">
-     <string>Damage</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_crit">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>20</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(221, 221, 221);</string>
     </property>
     <property name="text">
-     <string>Crit</string>
+     <string>Dam</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>30</y>
-     <width>171</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string/>
-   </property>
-   <widget class="QComboBox" name="comboBox_type">
+   <widget class="QLineEdit" name="lineEdit_incoming_damage_cub_set_result">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>20</y>
-      <width>171</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string/>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="comboBox_trash_elite_legend">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>0</y>
-      <width>61</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string/>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Trash</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Elite</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Legend</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_lvl">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>30</y>
       <width>21</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
@@ -306,106 +146,28 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_gender">
+   <widget class="QRadioButton" name="radioButton_crit">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>0</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string/>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Ж</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>М</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Н</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QPushButton" name="pushButton_generation">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>40</y>
-      <width>51</width>
-      <height>21</height>
+      <x>40</x>
+      <y>30</y>
+      <width>20</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>6</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Generate</string>
+     <string/>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_load">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_save">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Save</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_info">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>0</y>
-      <width>31</width>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
       <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Info</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_reset">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>40</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset</string>
+     </size>
     </property>
    </widget>
   </widget>
@@ -413,7 +175,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>30</y>
+     <y>58</y>
      <width>171</width>
      <height>281</height>
     </rect>
@@ -912,9 +674,9 @@
    <widget class="QLabel" name="label_physique">
     <property name="geometry">
      <rect>
-      <x>39</x>
+      <x>29</x>
       <y>0</y>
-      <width>81</width>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
@@ -964,6 +726,11 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>6</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Magic</string>
     </property>
@@ -976,6 +743,11 @@
       <width>51</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>6</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Might</string>
@@ -1003,7 +775,6 @@
    <zorder>comboBox_spell_5</zorder>
    <zorder>label_mastery</zorder>
    <zorder>label__intelligence</zorder>
-   <zorder>lineEdit_mastery</zorder>
    <zorder>lineEdit_skill_1</zorder>
    <zorder>lineEdit_skill_2</zorder>
    <zorder>lineEdit_skill_3</zorder>
@@ -1021,14 +792,15 @@
    <zorder>comboBox_talent_1</zorder>
    <zorder>radioButton_magic</zorder>
    <zorder>radioButton_might</zorder>
+   <zorder>lineEdit_mastery</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_weapons_battle">
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>190</y>
-     <width>171</width>
-     <height>121</height>
+     <y>208</y>
+     <width>181</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="title">
@@ -1037,10 +809,10 @@
    <widget class="QLineEdit" name="lineEdit_weapon2_armor_damage">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>59</y>
+      <x>120</x>
+      <y>58</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1056,14 +828,14 @@
    <widget class="QLineEdit" name="lineEdit_weapon2_penetration_damage">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>59</y>
+      <x>140</x>
+      <y>58</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(195, 166, 166);</string>
+     <string notr="true">background-color: rgb(255, 133, 133);</string>
     </property>
     <property name="text">
      <string/>
@@ -1075,14 +847,14 @@
    <widget class="QLineEdit" name="lineEdit_weapon1_penetration_damage">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>20</y>
+      <x>140</x>
+      <y>19</y>
       <width>21</width>
       <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(195, 166, 166);</string>
+     <string notr="true">background-color: rgb(255, 133, 133);</string>
     </property>
     <property name="text">
      <string/>
@@ -1094,8 +866,8 @@
    <widget class="QLineEdit" name="lineEdit_weapon1_health_damage">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>20</y>
+      <x>160</x>
+      <y>19</y>
       <width>21</width>
       <height>21</height>
      </rect>
@@ -1113,8 +885,8 @@
    <widget class="QLineEdit" name="lineEdit_weapon1_armor_damage">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>20</y>
+      <x>120</x>
+      <y>19</y>
       <width>21</width>
       <height>21</height>
      </rect>
@@ -1134,9 +906,14 @@
      <rect>
       <x>0</x>
       <y>20</y>
-      <width>91</width>
+      <width>101</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
@@ -1155,10 +932,10 @@
    <widget class="QLineEdit" name="lineEdit_weapon2_health_damage">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>59</y>
+      <x>160</x>
+      <y>58</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1175,9 +952,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>101</y>
+      <y>100</y>
       <width>20</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1194,9 +971,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>101</y>
+      <y>100</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1213,9 +990,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>101</y>
+      <y>100</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -1235,28 +1012,8 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>101</y>
+      <y>106</y>
       <width>61</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>7</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Защита</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_attack">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>102</y>
-      <width>41</width>
       <height>20</height>
      </rect>
     </property>
@@ -1268,6 +1025,26 @@
      </font>
     </property>
     <property name="text">
+     <string>Def</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_attack">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>105</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>6</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
      <string>Attack</string>
     </property>
    </widget>
@@ -1276,7 +1053,7 @@
      <rect>
       <x>0</x>
       <y>81</y>
-      <width>171</width>
+      <width>181</width>
       <height>21</height>
      </rect>
     </property>
@@ -1292,8 +1069,8 @@
    <widget class="QLineEdit" name="lineEdit_weapon1_magic_damage">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>20</y>
+      <x>100</x>
+      <y>19</y>
       <width>21</width>
       <height>21</height>
      </rect>
@@ -1311,10 +1088,10 @@
    <widget class="QLineEdit" name="lineEdit_weapon2_magic_damage">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>59</y>
+      <x>100</x>
+      <y>58</y>
       <width>21</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1332,9 +1109,14 @@
      <rect>
       <x>0</x>
       <y>59</y>
-      <width>91</width>
+      <width>101</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
@@ -1355,7 +1137,7 @@
      <rect>
       <x>0</x>
       <y>1</y>
-      <width>171</width>
+      <width>181</width>
       <height>20</height>
      </rect>
     </property>
@@ -1368,7 +1150,7 @@
      <rect>
       <x>0</x>
       <y>40</y>
-      <width>171</width>
+      <width>181</width>
       <height>20</height>
      </rect>
     </property>
@@ -1399,8 +1181,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>7</y>
-     <width>351</width>
+     <y>10</y>
+     <width>361</width>
      <height>21</height>
     </rect>
    </property>
@@ -1422,6 +1204,493 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QGroupBox" name="groupBox_periodic_damage">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>78</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 233, 233);</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLineEdit" name="lineEdit_periodic_damage_armor">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(186, 190, 202);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_periodic_damage_health">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 199, 200);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_periodic_damage_penetration_damage">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 133, 133);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_periodic_damage_magic">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(190, 190, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_periodic_heal_and_damage_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>29</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>6</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>periodic damage</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_periodic_heal">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>78</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(239, 255, 237);</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLineEdit" name="lineEdit_periodic_heal_armor">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(186, 190, 202);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_periodic_heal_health">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 133, 133);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_periodic_heal_magic">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>4</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(190, 190, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_periodic_heal_and_damage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>29</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>6</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>periodic heal</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_incoming_heal">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>138</y>
+     <width>81</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(239, 255, 237);</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLineEdit" name="lineEdit_incoming_heal_magic">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>5</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(190, 190, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_incoming_heal_armor">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>5</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(186, 190, 202);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_incoming_heal_health">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>5</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 133, 133);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_incoming_heal_enter">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(226, 226, 226);</string>
+    </property>
+    <property name="text">
+     <string>Heal</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_generation">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>54</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gen</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_save">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>54</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_reset">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>54</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_load">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>54</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_info">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>54</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Info</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_lvl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_trash_elite_legend">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Trash</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Elite</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Legend</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_type">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>30</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>6</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_gender">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>30</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Ж</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>М</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Н</string>
+    </property>
+   </item>
+  </widget>
+  <zorder>groupBox_incoming_damage</zorder>
+  <zorder>groupBox_physique_mastery_intelligence</zorder>
+  <zorder>groupBox_weapons_battle</zorder>
+  <zorder>groupBox_periodic_damage</zorder>
+  <zorder>groupBox_periodic_heal</zorder>
+  <zorder>groupBox_incoming_heal</zorder>
+  <zorder>pushButton_generation</zorder>
+  <zorder>pushButton_save</zorder>
+  <zorder>pushButton_reset</zorder>
+  <zorder>pushButton_load</zorder>
+  <zorder>pushButton_info</zorder>
+  <zorder>lineEdit_lvl</zorder>
+  <zorder>comboBox_trash_elite_legend</zorder>
+  <zorder>comboBox_type</zorder>
+  <zorder>comboBox_gender</zorder>
+  <zorder>lineEdit_name</zorder>
  </widget>
  <resources/>
  <connections/>

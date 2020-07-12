@@ -367,84 +367,31 @@ NPC_types_dict = {
 
 NPC_types_list = list(NPC_types_dict.keys())
 
-
-
-plate_dict = {  # шкура. Название: значение брони
-    'Без лат': 0,
-    'Ржавый доспех': 4,
-    'Обычный доспех': 9,
-    'Хороший доспех': 12,
-    'Отличный доспех': 17,
-    'Эпический доспех': 25,
-    'Легендарный доспех': 50,
+talents_dict = {  # индексы талантов для единоборств не стоит менять (на их основе работает программа)
+    'Кулаки-молоты': 'Урон ваших ударов кулаком равен урону молотов по умолчанию',
+    'Когти-кинжалы': 'Урон ваших ударов равен урону кинжалов',
+    'Отталкивание': 'Толчёк всех в непосредственной близости',
+    'Берсерк': 'Вы наносите и получаете 2 раза больше урона',
+    'Невидимость': 'Вы можете 1 раз за бой (или перед) стать невидимым',
+    'Девственность': 'Вы наносите и получаете в 2 раза меньше урона',
+    'Молитва': 'Вы восстанавливаете 2 очка здоровья',
+    'Принуждение': 'Вы срываете одежду и броню с врага - секс-интереса',
 }
 
+talents_list = list(talents_dict.keys())
 
-
-plate_list = list(plate_dict.keys())
-
-
-weapons_dict = {
-    'Без оружия':
-        {'name': 'Без оружия', 'two-handed': False, 'crit': 2, 'skill': 'Единоборства',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 1},
-    'Кастет':
-        {'name': 'Обычный кастет', 'two-handed': False, 'crit': 2, 'skill': 'Единоборства',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-    'Кинжал':
-        {'name': 'Обычный кинжал', 'two-handed': False, 'crit': 4, 'skill': '1хКлинки',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-    'Меч':
-        {'name': 'Обычный меч', 'two-handed': False, 'crit': 2, 'skill': '1хКлинки',
-         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 0, 'health_damage': 3},
-    'Копьё':
-        {'name': 'Обычное копьё', 'two-handed': False, 'crit': 2, 'skill': '1/2хКопья/Посох',
-         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 2},
-    'Топор':
-        {'name': 'Обычный топор', 'two-handed': False, 'crit': 2, 'skill': '1хУдарное',
-         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 2},
-    'Молот':
-        {'name': 'Обычный молот', 'two-handed': False, 'crit': 2, 'skill': '1хУдарное',
-         'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 1, 'health_damage': 2},
-    '2хПосох':
-        {'name': 'Обычный посох', 'two-handed': True, 'crit': 2, 'skill': '1/2хКопья/Посох',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-    '2хМеч':
-        {'name': 'Обычный 2х меч', 'two-handed': True, 'crit': 2, 'skill': '2хКлинки',
-         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 1, 'health_damage': 6},
-    '2хКопьё':
-        {'name': 'Обычное 2х копьё', 'two-handed': True, 'crit': 2, 'skill': '1/2хКопья/Посох',
-         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 5},
-    '2хТопор':
-        {'name': 'Обычный 2х топор', 'two-handed': True, 'crit': 2, 'skill': '2хУдарное',
-         'magic_damage': 0, 'armor_damage': 5, 'penetration_damage': 4, 'health_damage': 4},
-    '2хМолот':
-        {'name': 'Обычный 2х молот', 'two-handed': True, 'crit': 2, 'skill': '2хУдарное',
-         'magic_damage': 0, 'armor_damage': 7, 'penetration_damage': 2, 'health_damage': 4},
-    'Метательное':
-        {'name': 'Обычное метательное оружие', 'two-handed': False, 'crit': 4, 'skill': 'Единоборства',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
-    'Пистолет':
-        {'name': 'Обычный пистолет', 'two-handed': False, 'crit': 2, 'skill': '1хПистолеты',
-         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 2, 'health_damage': 3},
-    'Лук':
-        {'name': 'Обычный лук', 'two-handed': True, 'crit': 2, 'skill': '2хЛук',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 3},
-    'Праща':
-        {'name': 'Обычная праща', 'two-handed': True, 'crit': 2, 'skill': '2хПраща',
-         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 3},
-    'Арбалет':
-        {'name': 'Обычный арбалет', 'two-handed': True, 'crit': 2, 'skill': '2хАрбалет',
-         'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 5, 'health_damage': 6},
-    'Ружьё':
-        {'name': 'Обычное ружьё', 'two-handed': True, 'crit': 2, 'skill': '2хРужья',
-         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 6, 'health_damage': 6},
-    'Щит':
-        {'name': 'Обычный щит', 'two-handed': False, 'crit': 2, 'skill': 'Единоборства',
-         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 0},
+skills_dict = {
+    'Melee': ['Единоборства', '1хКлинок', '1хУдарное', '1/2хКопьё/Посох', '2хКлинок', '2хУдарное'],
+    'Ranged': ['1хПистолеты', '2хРужьё', '2хАрбалет', '2хЛук', '2хПраща'],
+    'Noncombat': ['Взлом', 'Ремонт', 'Карты', 'Выживание', 'Животные', 'Музыка']
 }
+skills_type_list = list(skills_dict.keys())
 
-weapons_list = list(weapons_dict.keys())
+skills_list_noncombat = skills_dict['Melee']
+skills_list_ranged = skills_dict['Ranged']
+skills_list_melee = skills_dict['Noncombat']
+
+skills_list = skills_dict['Melee'] + skills_dict['Ranged'] + skills_dict['Noncombat']
 
 spells_dict = {
     'Свет Монету': 'Восстанавливает +2 хп всем союзникам',
@@ -467,31 +414,121 @@ spells_dict = {
 }
 
 spells_list = list(spells_dict.keys())
-spells_index_list = [i for i in range(1, len(spells_dict.keys())+1)]
 
-talents_dict = {  # индексы талантов для единоборств не стоит менять (на их основе работает программа)
-    'Кулаки - молоты': 'Урон ваших ударов кулаком равен урону молотов по умолчанию',
-    'Когти - кинжалы': 'Урон ваших ударов равен урону кинжалов',
-    'Отталкивание': 'Толчёк всех в непосредственной близости',
-    'Берсерк': 'Вы наносите и получаете 2 раза больше урона',
-    'Невидимость': 'Вы можете 1 раз за бой (или перед) стать невидимым',
-    'Девственность': 'Вы наносите и получаете в 2 раза меньше урона',
-    'Молитва': 'Вы восстанавливаете 2 очка здоровья',
-    'Принуждение': 'Вы срываете одежду и броню с врага - секс-интереса',
+weapons_dict = {
+    'Без оружия':
+        {'name': 'Без оружия', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 2, 'skill': 'Единоборства',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 1},
+    'Кастет':
+        {'name': 'Обычный кастет', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 2, 'skill': 'Единоборства',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+    'Кинжал':
+        {'name': 'Обычный кинжал', 'ranged': False, 'two-handed': False, 'crit': 3, 'speed': 2, 'skill': '1хКлинки',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+    'Меч':
+        {'name': 'Обычный меч', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 1, 'skill': '1хКлинки',
+         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 0, 'health_damage': 3},
+    'Копьё':
+        {'name': 'Обычное копьё', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 1,
+         'skill': '1/2хКопья/Посох',
+         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 2},
+    'Топор':
+        {'name': 'Обычный топор', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 1, 'skill': '1хУдарное',
+         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 2},
+    'Молот':
+        {'name': 'Обычный молот', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 1, 'skill': '1хУдарное',
+         'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 1, 'health_damage': 2},
+    '2хПосох':
+        {'name': 'Обычный посох', 'ranged': False, 'two-handed': True, 'crit': 2, 'speed': 1,
+         'skill': '1/2хКопья/Посох',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+    '2хМеч':
+        {'name': 'Обычный 2х меч', 'ranged': False, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хКлинки',
+         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 1, 'health_damage': 6},
+    '2хКопьё':
+        {'name': 'Обычное 2х копьё', 'ranged': False, 'two-handed': True, 'crit': 2, 'speed': 1,
+         'skill': '1/2хКопья/Посох',
+         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 2, 'health_damage': 5},
+    '2хТопор':
+        {'name': 'Обычный 2х топор', 'ranged': False, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хУдарное',
+         'magic_damage': 0, 'armor_damage': 5, 'penetration_damage': 4, 'health_damage': 4},
+    '2хМолот':
+        {'name': 'Обычный 2х молот', 'ranged': False, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хУдарное',
+         'magic_damage': 0, 'armor_damage': 7, 'penetration_damage': 2, 'health_damage': 4},
+    'Метательное':
+        {'name': 'Обычное метательное оружие', 'ranged': True, 'two-handed': False, 'crit': 4, 'speed': 2,
+         'skill': 'Единоборства',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 2},
+    'Пистолет':
+        {'name': 'Обычный пистолет', 'ranged': True, 'two-handed': False, 'crit': 2, 'speed': 1, 'skill': '1хПистолеты',
+         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 2, 'health_damage': 3},
+    'Лук':
+        {'name': 'Обычный лук', 'ranged': True, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хЛук',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 3},
+    'Праща':
+        {'name': 'Обычная праща', 'ranged': True, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хПраща',
+         'magic_damage': 0, 'armor_damage': 1, 'penetration_damage': 1, 'health_damage': 3},
+    'Арбалет':
+        {'name': 'Обычный арбалет', 'ranged': True, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хАрбалет',
+         'magic_damage': 0, 'armor_damage': 3, 'penetration_damage': 5, 'health_damage': 6},
+    'Ружьё':
+        {'name': 'Обычное ружьё', 'ranged': True, 'two-handed': True, 'crit': 2, 'speed': 1, 'skill': '2хРужья',
+         'magic_damage': 0, 'armor_damage': 2, 'penetration_damage': 6, 'health_damage': 6},
+    'Щит':
+        {'name': 'Обычный щит', 'ranged': False, 'two-handed': False, 'crit': 2, 'speed': 1,
+         'skill': 'Навык оружия в другой руке',
+         'magic_damage': 0, 'armor_damage': 0, 'penetration_damage': 0, 'health_damage': 0},
 }
 
-talents_list = list(talents_dict.keys())
-talents_index_list = [i for i in range(1, len(talents_dict.keys())+1)]
+weapons_list = list(weapons_dict.keys())
 
-skills_dict = {
-    'Melee': ['Единоборства', '1хКлинки', '1хУдарное', '1/2хКопья/Посох', '2хКлинки', '2хУдарное'],
-    'Ranged': ['1хПистолеты', '2хРужья', '2хАрбалет', '2хЛук', '2хПраща'],
-    'Noncombat': ['Взлом', 'Ремонт', 'Карты', 'Выживание', 'Животные']
+weapons_one_hand_melee_list = []
+for weapon in weapons_list:
+    if not weapons_dict[weapon]['ranged'] and not weapons_dict[weapon]['two-handed']:
+        weapons_one_hand_melee_list.append(weapon)
+
+weapons_two_hand_melee_list = []
+for weapon in weapons_list:
+    if not weapons_dict[weapon]['ranged'] and weapons_dict[weapon]['two-handed']:
+        weapons_two_hand_melee_list.append(weapon)
+
+weapons_one_hand_range_list = []
+for weapon in weapons_list:
+    if weapons_dict[weapon]['ranged'] and not weapons_dict[weapon]['two-handed']:
+        weapons_one_hand_range_list.append(weapon)
+
+weapons_two_hand_range_list = []
+for weapon in weapons_list:
+    if weapons_dict[weapon]['ranged'] and weapons_dict[weapon]['two-handed']:
+        weapons_two_hand_range_list.append(weapon)
+
+weapons_types_dict = {
+    'Одноручное оружие ближнего боя': weapons_one_hand_melee_list,
+    'Двуручное оружие ближнего боя': weapons_two_hand_melee_list,
+    'Одноручное оружие дальнего боя': weapons_one_hand_range_list,
+    'Двуручное оружие дальнего боя': weapons_two_hand_range_list
 }
 
-melee_index_list = [i for i in range(1, len(skills_dict['Melee']) + 1)]
-ranged_index_list = [i for i in range(len(skills_dict['Melee'])+1, len(skills_dict['Melee']) + len(skills_dict['Ranged']) + 1)]
-noncombat_index_list = [i for i in range(len(skills_dict['Melee']) + len(skills_dict['Ranged']) + 1, len(skills_dict['Melee']) + len(skills_dict['Ranged']) + len(skills_dict['Noncombat']) + 1)]
+weapons_types_list = list(weapons_types_dict.keys())
 
+plate_dict = {  # шкура. Название: значение брони
+    'Без лат': 0,
+    'Ржавый доспех': 4,
+    'Обычный доспех': 9,
+    'Хороший доспех': 12,
+    'Отличный доспех': 17,
+    'Эпический доспех': 25,
+    'Легендарный доспех': 50,
+}
 
-skills_list = skills_dict['Melee'] + skills_dict['Ranged'] + skills_dict['Noncombat']
+plate_list = list(plate_dict.keys())
+
+loot_dict = {
+    1: ['Отмычки х2', 'Ткань', 'Солонина', 'Бекон', 'Морковь', 'Сыр', 'Вода', 'Нож', 'Бинт', 'Картоха', 'Рюмка',
+        'Карты', 'Флейта', 'Медное кольцо', 'Медный браслет', 'Железная цепочка', 'Железный браслет',
+        'Железное кольцо'],
+    2: ['Золотые часы', 'Антисептик', 'Книжка (обычн.)', 'Золотое кольцо', 'Серебряное кольцо', 'Золотая цепочка',
+        'Серебряная цепочка', 'Золотой браслет', 'Серебряный браслет', 'Наркотики'],
+    3: ['Изумруд', 'Сапфир', 'Гранат', 'Бриллиант', 'Кольцо с камнем', 'Браслет с инкрустацией', 'Кулон с камнем',
+        'Книга знаний...', 'Свиток заклинаний...', 'Учебник...'],
+}
